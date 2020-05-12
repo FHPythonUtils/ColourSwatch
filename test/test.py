@@ -5,6 +5,8 @@ import os
 from pathlib import Path
 THISDIR = str(Path(__file__).resolve().parent)
 sys.path.insert(0, os.path.dirname(THISDIR))
+from comparexml import compareFiles
+from yaml import safe_load
 import colourswatch.io
 
 #pylint: disable=missing-function-docstring
@@ -23,14 +25,12 @@ def test_gpl():
 def test_yaml():
 	yaml = colourswatch.io.openColourSwatch(THISDIR + "/base24.yaml")
 	colourswatch.io.saveColourSwatch(THISDIR + "/base24(yaml).gpl", yaml)
-	colourswatch.io.saveColourSwatch(THISDIR + "/base24(yaml).yaml", yaml)
-	'''
-	source = open(THISDIR + "/base24.yaml")
-	dest = open(THISDIR + "/base24(yaml).yaml")
-	assert source.read() == dest.read()
-	source.close()
-	dest.close()
-	'''
+	colourswatch.io.saveColourSwatch(THISDIR + "/base(yaml).yaml", yaml)
+	with open(THISDIR + "/base24.yaml") as yaml:
+		source = safe_load(yaml.read())
+	with open(THISDIR + "/base24(yaml).yaml") as yaml:
+		dest = safe_load(yaml.read())
+	assert source == dest
 
 # COLORS
 def test_colors():
@@ -59,13 +59,7 @@ def test_skp():
 	skp = colourswatch.io.openColourSwatch(THISDIR + "/example.skp")
 	colourswatch.io.saveColourSwatch(THISDIR + "/example(skp).gpl", skp)
 	colourswatch.io.saveColourSwatch(THISDIR + "/example(skp).skp", skp)
-	'''
-	source = open(THISDIR + "/example.skp")
-	dest = open(THISDIR + "/example(skp).skp")
-	assert source.read() == dest.read()
-	source.close()
-	dest.close()
-	'''
+	assert compareFiles(THISDIR + "/example.skp", THISDIR + "/example(skp).skp")
 
 # SOC
 def test_soc():
@@ -73,13 +67,7 @@ def test_soc():
 	colourswatch.io.saveColourSwatch(THISDIR + "/series(soc).gpl", soc)
 	colourswatch.io.saveColourSwatch(THISDIR + "/series(soc).skp", soc)
 	colourswatch.io.saveColourSwatch(THISDIR + "/series(soc).soc", soc)
-	'''
-	source = open(THISDIR + "/series.soc")
-	dest = open(THISDIR + "/series(soc).soc")
-	assert source.read() == dest.read()
-	source.close()
-	dest.close()
-	'''
+	assert compareFiles(THISDIR + "/series.soc", THISDIR + "/series(soc).soc")
 
 # TXT
 def test_txt():
@@ -100,21 +88,13 @@ def test_acbl():
 	colourswatch.io.saveColourSwatch(THISDIR + "/colours(acbl).skp", acbl)
 	colourswatch.io.saveColourSwatch(THISDIR + "/colours(acbl).txt", acbl)
 
-
 # XML
 def test_xml():
 	xml = colourswatch.io.openColourSwatch(THISDIR + "/scribus.xml")
 	colourswatch.io.saveColourSwatch(THISDIR + "/scribus(xml).gpl", xml)
 	colourswatch.io.saveColourSwatch(THISDIR + "/scribus(xml).skp", xml)
 	colourswatch.io.saveColourSwatch(THISDIR + "/scribus(xml).xml", xml)
-	'''
-	source = open(THISDIR + "/scribus.xml")
-	dest = open(THISDIR + "/scribus(xml).xml")
-	assert source.read() == dest.read()
-	source.close()
-	dest.close()
-	'''
-
+	assert compareFiles(THISDIR + "/scribus_desired.xml", THISDIR + "/scribus(xml).xml")
 
 # CDPAl
 def test_cdpal():
