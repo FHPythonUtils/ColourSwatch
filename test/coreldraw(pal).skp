@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<palette>
+	<description type="CMYK" name="coreldraw"/>
+	<color c="0.0" m="0.0" y="1.0" k="0.0" name="PANTONE Process Yellow CH"/>
+	<color c="0.0" m="1.0" y="0.0" k="0.0" name="PANTONE Process Magenta CH"/>
+	<color c="1.0" m="0.0" y="0.0" k="0.0" name="PANTONE Process Cyan CH"/>
+	<color c="0.0" m="0.0" y="0.0" k="1.0" name="PANTONE Process Black CH"/>
+	<color c="0.0" m="0.48" y="0.89" k="0.0" name="PANTONE Orange 021 CH"/>
+	<color c="0.0" m="0.74" y="0.82" k="0.0" name="PANTONE Red 032 CH"/>
+	<color c="1.0" m="0.84" y="0.0" k="0.0" name="PANTONE Blue 072 CH"/>
+	<color c="0.02" m="0.0" y="0.32" k="0.0" name="PANTONE 100 CH"/>
+	<color c="0.03" m="0.0" y="0.46" k="0.0" name="PANTONE 101 CH"/>
+	<color c="0.04" m="0.0" y="0.6" k="0.0" name="PANTONE 102 CH"/>
+	<color c="0.06" m="0.0" y="0.8" k="0.0" name="PANTONE Yellow CH"/>
+	<color c="0.02" m="0.0" y="1.0" k="0.2" name="PANTONE 103 CH"/>
+</palette>

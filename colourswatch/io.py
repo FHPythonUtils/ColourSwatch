@@ -5,13 +5,21 @@ from xml.etree.ElementTree import Element, SubElement
 from os.path import exists
 from shlex import split
 from defusedxml.ElementTree import parse
+from defusedxml.minidom import parseString
 from gimpformats.GimpGplPalette import GimpGplPalette
 from metprint import LogType, Logger, FHFormatter
 from colormath.color_objects import sRGBColor, CMYKColor, LabColor
 import yaml
 
-
 from colourswatch.colourswatch import ColourSwatch, Colour
+
+def prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\"?>"):
+	"""Return a pretty-printed XML string for the Element.  """
+	rough_string = ElementTree.tostring(elem, 'utf-8')
+	reparsed = parseString(rough_string)
+	reparsed = reparsed.toprettyxml(indent=indent).split("\n")[1:]
+	reparsed.insert(0, doctype)
+	return "\n".join(reparsed)
 
 def extNotRecognised(fileName):
 	""" Output the file extension not recognised error """
@@ -157,14 +165,47 @@ def saveSwatch_SPL(fileName, colourSwatch):
 ### SKP ###
 def openSwatch_SKP(file):
 	""" Open a .SKP into a colour swatch """
+	with open(file) as fileData:
+		xmlrep = parse(fileData).getroot()
+		cType = xmlrep[0].attrib["type"]
+		colours = []
+		for colour in xmlrep[1:]:
+			cName = colour.attrib["name"]
+			if cType == "CMYK":
+				cColour = CMYKColor(float(colour.attrib["c"]), float(colour.attrib["m"]),
+				float(colour.attrib["y"]), float(colour.attrib["k"]))
+			else:
+				cColour = sRGBColor(float(colour.attrib["r"]), float(colour.attrib["g"]),
+				float(colour.attrib["b"]))
+			colours.append(Colour(cName, cColour))
+	return ColourSwatch(xmlrep[0].attrib["name"], colours)
+
 
 def saveSwatch_SKP(fileName, colourSwatch):
 	""" Save a colour swatch as .SKP """
+	with open(fileName, "w") as fileData:
+		root = Element("palette")
+		SubElement(root, "description", {"type": "CMYK", "name": colourSwatch.name})
+		for colour in colourSwatch.colours:
+			c, m, y, k = getWriteOutColour(colour.toCMYK().get_value_tuple(), float, 1)
+			SubElement(root, "color", {"c": str(c), "m": str(m), "y": str(y),
+			"k": str(k), "name": colour.name})
+		fileData.write(prettify(root))
 
 
 ### SOC ###
 def openSwatch_SOC(file):
 	""" Open a .SOC into a colour swatch """
+	with open(file) as fileData:
+		xmlrep = parse(fileData).getroot()
+		colours = []
+		for colour in xmlrep[1:]:
+			cName = colour.attrib["{http://openoffice.org/2000/drawing}name"]
+			col = colour.attrib["{http://openoffice.org/2000/drawing}color"][1:]
+			cColour = sRGBColor(int(col[0:2], 16), int(col[2:4], 16), int(col[4:6], 16), True)
+			colours.append(Colour(cName, cColour))
+	return getSwatchFromFileName(file, colours)
+
 
 def saveSwatch_SOC(fileName, colourSwatch):
 	""" Save a colour swatch as .SOC """
@@ -201,6 +242,21 @@ def saveSwatch_TXT(fileName, colourSwatch):
 ### ACBL ###
 def openSwatch_ACBL(file):
 	""" Open a .ACBL into a colour swatch """
+	with open(file) as fileData:
+		xmlrep = parse(fileData).getroot()
+		cType = xmlrep[1][0].attrib["ColorSpace"]
+		colours = []
+		for colour in xmlrep[2]:
+			cName = colour.attrib["N"]
+			cRawColour = [float(col) for col in colour[0].text.split(None)]
+			if cType == "CMYK":
+				cColour = CMYKColor(*cRawColour)
+			elif cType == "RGB":
+				cColour = sRGBColor(*cRawColour)
+			else:
+				cColour = LabColor(*cRawColour)
+			colours.append(Colour(cName, cColour))
+	return getSwatchFromFileName(file, colours)
 
 def saveSwatch_ACBL(fileName, colourSwatch):
 	""" Save a colour swatch as .ACBL """
@@ -210,9 +266,28 @@ def saveSwatch_ACBL(fileName, colourSwatch):
 ### XML ###
 def openSwatch_XML(file):
 	""" Open a .XML into a colour swatch """
+	with open(file) as fileData:
+		xmlrep = parse(fileData).getroot()
+		colours = []
+		for colour in xmlrep:
+			cName = colour.attrib["NAME"]
+			col = colour.attrib["RGB"][1:] if "RGB" in colour.attrib else colour.attrib["CMYK"][1:]
+			cColour = sRGBColor(int(col[0:2], 16), int(col[2:4], 16), int(col[4:6], 16), True
+			) if "RGB" in colour.attrib else CMYKColor(
+			int(col[0:2], 16)/255, int(col[2:4], 16)/255,
+			int(col[4:6], 16)/255, int(col[6:8], 16)/255)
+			colours.append(Colour(cName, cColour))
+	return ColourSwatch(xmlrep.attrib["Name"], colours)
 
 def saveSwatch_XML(fileName, colourSwatch):
 	""" Save a colour swatch as .XML """
+	with open(fileName, "w") as fileData:
+		root = Element("SCRIBUSCOLORS", {"Name": colourSwatch.name})
+		for colour in colourSwatch.colours:
+			SubElement(root, "COLOR", {"Spot": "0", "Register": "0",
+			"NAME": colour.name, "RGB": "#" + "".join(["{:02x}".format(col
+			) for col in getWriteOutColour(colour.toRGB().get_value_tuple())])})
+		fileData.write(prettify(root, indent=" ", doctype="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"))
 
 
 ### PaintShopPro PAL ###
@@ -230,8 +305,6 @@ def saveSwatch_PSPPAL(fileName, colourSwatch):
 		fileData.write("JASC-PAL\n0100\n{}\n".format(len(colourSwatch.colours)) + "\n".join([" ".join(
 			["{}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())]
 			) for colour in colourSwatch.colours]) + "\n")
-
-
 
 
 ### CorelDraw PAL ###
@@ -257,6 +330,7 @@ def saveSwatch_CDPAL(fileName, colourSwatch):
 			["{:>3}".format(col) for col in
 			getWriteOutColour(colour.toCMYK().get_value_tuple(), int, 100)])
 			for colour in colourSwatch.colours]) + "\n")
+	return True
 
 
 ### HPL ###

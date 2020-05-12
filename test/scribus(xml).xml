@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSCOLORS Name="tango">
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 1" RGB="#eeeeec"/>
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 2" RGB="#d3d7cf"/>
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 3" RGB="#babdb6"/>
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 4" RGB="#888a85"/>
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 5" RGB="#555753"/>
+ <COLOR Spot="0" Register="0" NAME=" Aluminum 6" RGB="#2e3436"/>
+ <COLOR Spot="0" Register="0" NAME=" Blue 1" RGB="#bfceea"/>
+ <COLOR Spot="0" Register="0" NAME=" Blue 2" RGB="#4374b7"/>
+ <COLOR Spot="0" Register="0" NAME="Black" RGB="#000000"/>
+ <COLOR Spot="0" Register="0" NAME="White" RGB="#ffffff"/>
+</SCRIBUSCOLORS>

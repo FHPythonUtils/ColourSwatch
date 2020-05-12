@@ -1,0 +1,326 @@
+GIMP Palette
+Name: series
+Columns: 16
+#
+ 79   0   0	Red Bri  31%
+ 95   0   0	Red Bri  37%
+111   0   0	Red Bri  44%
+127   0   0	Red Bri  50%
+143   0   0	Red Bri  57%
+159   0   0	Red Bri  63%
+175   0   0	Red Bri  70%
+191   0   0	Red Bri  76%
+207   0   0	Red Bri  82%
+223   0   0	Red Bri  88%
+239   0   0	Red Bri  94%
+255   0   0	Red Bri 100%
+255  80  80	Red Sat 68%
+255  96  96	Red Sat 62%
+255 112 112	Red Sat 56%
+255 128 128	Red Sat 50%
+255 144 144	Red Sat 44%
+255 160 160	Red Sat 38%
+255 176 176	Red Sat 32%
+255 192 192	Red Sat 25%
+255 208 208	Red Sat 19%
+255 224 224	Red Sat 12%
+255 240 240	Red Sat  5%
+  0  63   0	Green Bri  25%
+  0  79   0	Green Bri  31%
+  0  95   0	Green Bri  37%
+  0 111   0	Green Bri  44%
+  0 127   0	Green Bri  50%
+  0 143   0	Green Bri  57%
+  0 159   0	Green Bri  63%
+  0 175   0	Green Bri  70%
+  0 191   0	Green Bri  76%
+  0 207   0	Green Bri  82%
+  0 223   0	Green Bri  88%
+  0 239   0	Green Bri  94%
+  0 255   0	Green Bri 100%
+ 80 255  80	Green Sat 68%
+ 96 255  96	Green Sat 62%
+112 255 112	Green Sat 56%
+128 255 128	Green Sat 50%
+144 255 144	Green Sat 44%
+160 255 160	Green Sat 38%
+176 255 176	Green Sat 32%
+192 255 192	Green Sat 25%
+208 255 208	Green Sat 19%
+224 255 224	Green Sat 12%
+240 255 240	Green Sat  5%
+  0   0  63	Blue Bri  25%
+  0   0  79	Blue Bri  31%
+  0   0  95	Blue Bri  37%
+  0   0 111	Blue Bri  44%
+  0   0 127	Blue Bri  50%
+  0   0 143	Blue Bri  57%
+  0   0 159	Blue Bri  63%
+  0   0 175	Blue Bri  70%
+  0   0 191	Blue Bri  76%
+  0   0 207	Blue Bri  82%
+  0   0 223	Blue Bri  88%
+  0   0 239	Blue Bri  94%
+  0   0 255	Blue Bri 100%
+ 80  80 255	Blue Sat 68%
+ 96  96 255	Blue Sat 62%
+112 112 255	Blue Sat 56%
+128 128 255	Blue Sat 50%
+144 144 255	Blue Sat 44%
+160 160 255	Blue Sat 38%
+176 176 255	Blue Sat 32%
+192 192 255	Blue Sat 25%
+208 208 255	Blue Sat 19%
+224 224 255	Blue Sat 12%
+240 240 255	Blue Sat  5%
+  0  63  63	Cyan Bri  25%
+  0  79  79	Cyan Bri  31%
+  0  95  95	Cyan Bri  37%
+  0 111 111	Cyan Bri  44%
+  0 127 127	Cyan Bri  50%
+  0 143 143	Cyan Bri  57%
+  0 159 159	Cyan Bri  63%
+  0 175 175	Cyan Bri  70%
+  0 191 191	Cyan Bri  76%
+  0 207 207	Cyan Bri  82%
+  0 223 223	Cyan Bri  88%
+  0 239 239	Cyan Bri  94%
+  0 255 255	Cyan Bri 100%
+ 80 255 255	Cyan Sat 68%
+ 96 255 255	Cyan Sat 62%
+112 255 255	Cyan Sat 56%
+128 255 255	Cyan Sat 50%
+144 255 255	Cyan Sat 44%
+160 255 255	Cyan Sat 38%
+176 255 255	Cyan Sat 32%
+192 255 255	Cyan Sat 25%
+208 255 255	Cyan Sat 19%
+224 255 255	Cyan Sat 12%
+240 255 255	Cyan Sat  5%
+ 63   0  63	Magenta Bri  25%
+ 79   0  79	Magenta Bri  31%
+ 95   0  95	Magenta Bri  37%
+111   0 111	Magenta Bri  44%
+127   0 127	Magenta Bri  50%
+143   0 143	Magenta Bri  57%
+159   0 159	Magenta Bri  63%
+175   0 175	Magenta Bri  70%
+191   0 191	Magenta Bri  76%
+207   0 207	Magenta Bri  82%
+223   0 223	Magenta Bri  88%
+239   0 239	Magenta Bri  94%
+255   0 255	Magenta Bri 100%
+255  80 255	Magenta Sat 68%
+255  96 255	Magenta Sat 62%
+255 112 255	Magenta Sat 56%
+255 128 255	Magenta Sat 50%
+255 144 255	Magenta Sat 44%
+255 160 255	Magenta Sat 38%
+255 176 255	Magenta Sat 32%
+255 192 255	Magenta Sat 25%
+255 208 255	Magenta Sat 19%
+255 224 255	Magenta Sat 12%
+255 240 255	Magenta Sat  5%
+ 63  63   0	Yellow Bri  25%
+ 79  79   0	Yellow Bri  31%
+ 95  95   0	Yellow Bri  37%
+111 111   0	Yellow Bri  44%
+127 127   0	Yellow Bri  50%
+143 143   0	Yellow Bri  57%
+159 159   0	Yellow Bri  63%
+175 175   0	Yellow Bri  70%
+191 191   0	Yellow Bri  76%
+207 207   0	Yellow Bri  82%
+223 223   0	Yellow Bri  88%
+239 239   0	Yellow Bri  94%
+255 255   0	Yellow Bri 100%
+255 255  80	Yellow Sat 68%
+255 255  96	Yellow Sat 62%
+255 255 112	Yellow Sat 56%
+255 255 128	Yellow Sat 50%
+255 255 144	Yellow Sat 44%
+255 255 160	Yellow Sat 38%
+255 255 176	Yellow Sat 32%
+255 255 192	Yellow Sat 25%
+255 255 208	Yellow Sat 19%
+255 255 224	Yellow Sat 12%
+255 255 240	Yellow Sat  5%
+  0   0   0	Black
+ 15  15  15	Gray Bri   6%
+ 31  31  31	Gray Bri  12%
+ 47  47  47	Gray Bri  19%
+ 63  63  63	Gray Bri  25%
+ 79  79  79	Gray Bri  31%
+ 95  95  95	Gray Bri  37%
+111 111 111	Gray Bri  44%
+127 127 127	Gray Bri  50%
+143 143 143	Gray Bri  57%
+159 159 159	Gray Bri  63%
+175 175 175	Gray Bri  70%
+191 191 191	Gray Bri  76%
+207 207 207	Gray Bri  82%
+223 223 223	Gray Bri  88%
+239 239 239	Gray Bri  94%
+255 255 255	White
+ 63  31   0	Orange Bri  25%
+ 79  39   0	Orange Bri  31%
+ 95  47   0	Orange Bri  37%
+111  55   0	Orange Bri  44%
+127  63   0	Orange Bri  50%
+143  71   0	Orange Bri  57%
+159  79   0	Orange Bri  63%
+175  87   0	Orange Bri  70%
+191  95   0	Orange Bri  76%
+207 103   0	Orange Bri  82%
+223 111   0	Orange Bri  88%
+239 119   0	Orange Bri  94%
+255 127   0	Orange Bri 100%
+255 135  15	Orange Sat  94%
+255 143  31	Orange Sat  88%
+255 151  47	Orange Sat  82%
+255 159  63	Orange Sat  76%
+255 167  79	Orange Sat  70%
+255 175  95	Orange Sat  63%
+255 183 111	Orange Sat  57%
+255 191 127	Orange Sat  50%
+255 199 143	Orange Sat  44%
+255 207 159	Orange Sat  37%
+255 215 175	Orange Sat  31%
+255 223 191	Orange Sat  25%
+255 231 207	Orange Sat  19%
+255 239 223	Orange Sat  12%
+ 63   0  31	blue-Red Bri  25%
+ 79   0  39	blue-Red Bri  31%
+ 95   0  47	blue-Red Bri  37%
+111   0  55	blue-Red Bri  44%
+127   0  63	blue-Red Bri  50%
+143   0  71	blue-Red Bri  57%
+159   0  79	blue-Red Bri  63%
+175   0  87	blue-Red Bri  70%
+191   0  95	blue-Red Bri  76%
+207   0 103	blue-Red Bri  82%
+223   0 111	blue-Red Bri  88%
+239   0 119	blue-Red Bri  94%
+255   0 127	blue-Red Bri 100%
+255  15 135	blue-Red Sat  94%
+255  31 143	blue-Red Sat  88%
+255  47 151	blue-Red Sat  82%
+255  63 159	blue-Red Sat  76%
+255  79 167	blue-Red Sat  70%
+255  95 175	blue-Red Sat  63%
+255 111 183	blue-Red Sat  57%
+255 127 191	blue-Red Sat  50%
+255 143 199	blue-Red Sat  44%
+255 159 207	blue-Red Sat  37%
+255 175 215	blue-Red Sat  31%
+255 191 223	blue-Red Sat  25%
+255 207 231	blue-Red Sat  19%
+255 223 239	blue-Red Sat  12%
+ 31  63   0	red-Green Bri  25%
+ 39  79   0	red-Green Bri  31%
+ 47  95   0	red-Green Bri  37%
+ 55 111   0	red-Green Bri  44%
+ 63 127   0	red-Green Bri  50%
+ 71 143   0	red-Green Bri  57%
+ 79 159   0	red-Green Bri  63%
+ 87 175   0	red-Green Bri  70%
+ 95 191   0	red-Green Bri  76%
+103 207   0	red-Green Bri  82%
+111 223   0	red-Green Bri  88%
+119 239   0	red-Green Bri  94%
+127 255   0	red-Green Bri 100%
+135 255  15	red-Green Sat  94%
+143 255  31	red-Green Sat  88%
+151 255  47	red-Green Sat  82%
+159 255  63	red-Green Sat  76%
+167 255  79	red-Green Sat  70%
+175 255  95	red-Green Sat  63%
+183 255 111	red-Green Sat  57%
+191 255 127	red-Green Sat  50%
+199 255 143	red-Green Sat  44%
+207 255 159	red-Green Sat  37%
+215 255 175	red-Green Sat  31%
+223 255 191	red-Green Sat  25%
+231 255 207	red-Green Sat  19%
+239 255 223	red-Green Sat  12%
+  0  63  31	blue-Green Bri  25%
+  0  79  39	blue-Green Bri  31%
+  0  95  47	blue-Green Bri  37%
+  0 111  55	blue-Green Bri  44%
+  0 127  63	blue-Green Bri  50%
+  0 143  71	blue-Green Bri  57%
+  0 159  79	blue-Green Bri  63%
+  0 175  87	blue-Green Bri  70%
+  0 191  95	blue-Green Bri  76%
+  0 207 103	blue-Green Bri  82%
+  0 223 111	blue-Green Bri  88%
+  0 239 119	blue-Green Bri  94%
+  0 255 127	blue-Green Bri 100%
+ 15 255 135	blue-Green Sat  94%
+ 31 255 143	blue-Green Sat  88%
+ 47 255 151	blue-Green Sat  82%
+ 63 255 159	blue-Green Sat  76%
+ 79 255 167	blue-Green Sat  70%
+ 95 255 175	blue-Green Sat  63%
+111 255 183	blue-Green Sat  57%
+127 255 191	blue-Green Sat  50%
+143 255 199	blue-Green Sat  44%
+159 255 207	blue-Green Sat  37%
+175 255 215	blue-Green Sat  31%
+191 255 223	blue-Green Sat  25%
+207 255 231	blue-Green Sat  19%
+223 255 239	blue-Green Sat  12%
+ 31   0  63	red-Blue Bri  25%
+ 39   0  79	red-Blue Bri  31%
+ 47   0  95	red-Blue Bri  37%
+ 55   0 111	red-Blue Bri  44%
+ 63   0 127	red-Blue Bri  50%
+ 71   0 143	red-Blue Bri  57%
+ 79   0 159	red-Blue Bri  63%
+ 87   0 175	red-Blue Bri  70%
+ 95   0 191	red-Blue Bri  76%
+103   0 207	red-Blue Bri  82%
+111   0 223	red-Blue Bri  88%
+119   0 239	red-Blue Bri  94%
+127   0 255	red-Blue Bri 100%
+135  15 255	red-Blue Sat  94%
+143  31 255	red-Blue Sat  88%
+151  47 255	red-Blue Sat  82%
+159  63 255	red-Blue Sat  76%
+167  79 255	red-Blue Sat  70%
+175  95 255	red-Blue Sat  63%
+183 111 255	red-Blue Sat  57%
+191 127 255	red-Blue Sat  50%
+199 143 255	red-Blue Sat  44%
+207 159 255	red-Blue Sat  37%
+215 175 255	red-Blue Sat  31%
+223 191 255	red-Blue Sat  25%
+231 207 255	red-Blue Sat  19%
+239 223 255	red-Blue Sat  12%
+  0  31  63	green-Blue Bri  25%
+  0  39  79	green-Blue Bri  31%
+  0  47  95	green-Blue Bri  37%
+  0  55 111	green-Blue Bri  44%
+  0  63 127	green-Blue Bri  50%
+  0  71 143	green-Blue Bri  57%
+  0  79 159	green-Blue Bri  63%
+  0  87 175	green-Blue Bri  70%
+  0  95 191	green-Blue Bri  76%
+  0 103 207	green-Blue Bri  82%
+  0 111 223	green-Blue Bri  88%
+  0 119 239	green-Blue Bri  94%
+  0 127 255	green-Blue Bri 100%
+ 15 135 255	green-Blue Sat  94%
+ 31 143 255	green-Blue Sat  88%
+ 47 151 255	green-Blue Sat  82%
+ 63 159 255	green-Blue Sat  76%
+ 79 167 255	green-Blue Sat  70%
+ 95 175 255	green-Blue Sat  63%
+111 183 255	green-Blue Sat  57%
+127 191 255	green-Blue Sat  50%
+143 199 255	green-Blue Sat  44%
+159 207 255	green-Blue Sat  37%
+175 215 255	green-Blue Sat  31%
+191 223 255	green-Blue Sat  25%
+207 231 255	green-Blue Sat  19%
+223 239 255	green-Blue Sat  12%

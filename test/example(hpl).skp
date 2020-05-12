@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<palette>
+	<description type="CMYK" name="example"/>
+	<color c="0.0" m="0.0" y="0.0" k="1.0" name="colour0"/>
+	<color c="0.0" m="0.0" y="0.0" k="0.0" name="colour1"/>
+	<color c="0.0" m="0.0" y="0.0" k="0.19999999999999996" name="colour2"/>
+	<color c="0.0" m="0.0" y="0.0" k="0.4" name="colour3"/>
+	<color c="0.0" m="0.0" y="0.0" k="0.6" name="colour4"/>
+	<color c="0.0" m="0.0" y="0.0" k="0.8" name="colour5"/>
+	<color c="0.0" m="0.0" y="0.0" k="1.0" name="colour6"/>
+</palette>

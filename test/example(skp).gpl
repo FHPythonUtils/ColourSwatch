@@ -1,0 +1,14 @@
+GIMP Palette
+Name: Standard CMYK Palette
+Columns: 16
+#
+  0   0   0	Registration Color
+  0   0   0	Black
+ 25  25  25	90% Black
+ 50  50  50	80% Black
+ 76  76  76	70% Black
+102 102 102	60% Black
+234 247 247	Alice Blue
+220 230 246	Lavender
+245 235 242	Lavender Blush
+246 222 222	Misty Rose
