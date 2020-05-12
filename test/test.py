@@ -163,5 +163,5 @@ if __name__ == "__main__":
 	#test_acbl()
 	#test_xml()
 	test_cdpal()
-	#test_psppal()
+	test_psppal()
 	test_hpl()

@@ -59,10 +59,10 @@ def saveColourSwatch(fileName, colourSwatch):
 def getColourFromLine(line, lineno, colourSpaceSize=3, colourSpace=sRGBColor, divider=255):
 	""" getColourFromLine """
 	parts = line.split(None)
-	return Colour(" ".join(parts[colourSpaceSize:]) if len(parts) >= colourSpaceSize
+	return Colour(" ".join(parts[colourSpaceSize:]) if len(parts) > colourSpaceSize
 	else "colour{}".format(lineno),
 	colour=colourSpace(*[float(col)/divider for col in parts[:colourSpaceSize]]),
-	nameNull=len(parts) < colourSpaceSize)
+	nameNull=len(parts) <= colourSpaceSize)
 
 
 def getSwatchFromFileName(file, colours):
@@ -218,16 +218,27 @@ def saveSwatch_XML(fileName, colourSwatch):
 ### PaintShopPro PAL ###
 def openSwatch_PSPPAL(file):
 	""" Open a PaintShopPro .PAL into a colour swatch """
+	with open(file) as fileData:
+		colours = []
+		for lineno, line in enumerate(fileData.readlines()[3:]):
+			colours.append(getColourFromLine(line, lineno))
+	return getSwatchFromFileName(file, colours)
 
 def saveSwatch_PSPPAL(fileName, colourSwatch):
 	""" Save a colour swatch as PaintShopPro .PAL """
+	with open(fileName, "w") as fileData:
+		fileData.write("JASC-PAL\n0100\n{}\n".format(len(colourSwatch.colours)) + "\n".join([" ".join(
+			["{}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())]
+			) for colour in colourSwatch.colours]) + "\n")
+
+
 
 
 ### CorelDraw PAL ###
 def openSwatch_CDPAL(file):
 	""" Open a CorelDraw .PAL into a colour swatch """
 	with open(file) as fileData:
-		if fileData.readline() == "JASC-PAL":
+		if fileData.readlines()[0].strip() == "JASC-PAL":
 			return openSwatch_PSPPAL(file)
 	with open(file) as fileData:
 		colours = []
@@ -240,7 +251,7 @@ def saveSwatch_CDPAL(fileName, colourSwatch):
 	""" Save a colour swatch as CorelDraw .PAL """
 	for colour in colourSwatch.colours:
 		if colour.nameNull:
-			saveSwatch_PSPPAL(fileName, colourSwatch)
+			return saveSwatch_PSPPAL(fileName, colourSwatch)
 	with open(fileName, "w") as fileData:
 		fileData.write("\n".join(["\"{}\"  ".format(colour.name) + "  ".join(
 			["{:>3}".format(col) for col in
