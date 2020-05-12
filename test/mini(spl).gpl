@@ -1,0 +1,15 @@
+GIMP Palette
+Name: mini
+Columns: 16
+#
+  0   0   0	Black
+ 25  25  25	90% Black
+ 51  51  51	80% Black
+ 76  76  76	70% Black
+102 102 102	60% Black
+127 127 127	50% Black
+153 153 153	40% Black
+178 178 178	30% Black
+204 204 204	20% Black
+229 229 229	10% Black
+255 255 255	White

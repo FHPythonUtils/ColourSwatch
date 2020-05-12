@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "colourswatch"
+version = "0.1"
+description = "Use this module to read, and write to a number of colour palette file formats"
+authors = ["FredHappyface"]
+classifiers = [
+	"Development Status :: 5 - Production/Stable",
+	"Intended Audience :: Developers",
+	"Intended Audience :: Education",
+	"License :: OSI Approved :: MIT License",
+	"Natural Language :: English",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.6",
+	"Programming Language :: Python :: 3.7",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: Implementation :: CPython",
+	"Topic :: Multimedia :: Graphics",
+	"Topic :: Software Development :: Libraries :: Python Modules",
+	"Topic :: Utilities"
+]
+homepage = "https://github.com/FHPythonUtils/ColourSwatch"
+repository = "https://github.com/FHPythonUtils/ColourSwatch"
+documentation = "https://github.com/FHPythonUtils/ColourSwatch/blob/master/README.md"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.5"
+colormath = "^3.0.0"
+gimpformats = "^2020.2.2"
+pyyaml = "^5.3.1"
+
+
+[tool.dephell.main]
+from = "pyproject.toml"
+to = "requirements.txt"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

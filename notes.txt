@@ -1,0 +1,3 @@
+http://www.selapa.net/swatches/colors/fileformats.php
+https://www.cyotek.com/cyotek-palette-editor/supported-palette-formats
+https://github.com/nsfmc/swatch

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<palette>
+	<description type="CMYK" name="Standard CMYK Palette" />
+	<color c="1" m="1" y="1" k="1" name="Registration Color" />
+	<color c="0" m="0" y="0" k="1" name="Black" />
+	<color c="0" m="0" y="0" k="0.9" name="90% Black" />
+	<color c="0" m="0" y="0" k="0.8" name="80% Black" />
+	<color c="0" m="0" y="0" k="0.7" name="70% Black" />
+	<color c="0" m="0" y="0" k="0.6" name="60% Black" />
+	<color c="0.078000" m="0.027000" y="0.024000" k="0.004000" name="Alice Blue" />
+	<color c="0.133000" m="0.094000" y="0.031000" k="0.004000" name="Lavender" />
+	<color c="0.035000" m="0.071000" y="0.047000" k="0.004000" name="Lavender Blush" />
+	<color c="0.031000" m="0.125000" y="0.122000" k="0.004000" name="Misty Rose" />
+</palette>
