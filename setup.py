@@ -21,7 +21,7 @@ if os.path.exists(readme_path):
 setup(
     long_description=readme,
     name='colourswatch',
-    version='0.1',
+    version='2020',
     description='Use this module to read, and write to a number of colour palette file formats',
     python_requires='==3.*,>=3.5.0',
     project_urls={
@@ -47,11 +47,11 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities'
     ],
-    packages=['colourswatch'],
+    packages=['ColourSwatch'],
     package_dir={"": "."},
     package_data={},
     install_requires=[
-        'colormath==3.*,>=3.0.0', 'gimpformats==2020.*,>=2020.2.2',
-        'pyyaml==5.*,>=5.3.1'
+        'colormath==3.*,>=3.0.0', 'defusedxml==0.*,>=0.6.0',
+        'gimpformats==2020.*,>=2020.2.2', 'pyyaml==5.*,>=5.3.1'
     ],
 )

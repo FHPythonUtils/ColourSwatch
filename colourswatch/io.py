@@ -199,7 +199,7 @@ def openSwatch_SOC(file):
 	with open(file) as fileData:
 		xmlrep = parse(fileData).getroot()
 		colours = []
-		for colour in xmlrep[1:]:
+		for colour in xmlrep:
 			cName = colour.attrib["{http://openoffice.org/2000/drawing}name"]
 			col = colour.attrib["{http://openoffice.org/2000/drawing}color"][1:]
 			cColour = sRGBColor(int(col[0:2], 16), int(col[2:4], 16), int(col[4:6], 16), True)
@@ -209,6 +209,29 @@ def openSwatch_SOC(file):
 
 def saveSwatch_SOC(fileName, colourSwatch):
 	""" Save a colour swatch as .SOC """
+	with open(fileName, "w") as fileData:
+		root = Element("office_color_table")
+		for colour in colourSwatch.colours:
+			SubElement(root, "draw_color", {"draw_name": colour.name, "draw_color":
+			"#" + "".join(["{:02x}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())])})
+		fileData.write(prettify(root, indent=" ",
+		doctype="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n").replace("<office_color_table>", "<office:color-table xmlns:office=\"http://openoffice.org/2000/office\" " +
+		"xmlns:style=\"http://openoffice.org/2000/style\" " +
+		"xmlns:text=\"http://openoffice.org/2000/text\" " +
+		"xmlns:table=\"http://openoffice.org/2000/table\" " +
+		"xmlns:draw=\"http://openoffice.org/2000/drawing\" " +
+		"xmlns:fo=\"http://www.w3.org/1999/XSL/Format\" " +
+		"xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
+		"xmlns:dc=\"http://purl.org/dc/elements/1.1/\" " +
+		"xmlns:meta=\"http://openoffice.org/2000/meta\" " +
+		"xmlns:number=\"http://openoffice.org/2000/datastyle\" " +
+		"xmlns:svg=\"http://www.w3.org/2000/svg\" " +
+		"xmlns:chart=\"http://openoffice.org/2000/chart\" " +
+		"xmlns:dr3d=\"http://openoffice.org/2000/dr3d\" " +
+		"xmlns:math=\"http://www.w3.org/1998/Math/MathML\" " +
+		"xmlns:form=\"http://openoffice.org/2000/form\" " +
+		"xmlns:script=\"http://openoffice.org/2000/script\">").replace("office_color_table",
+		"office:color-table").replace("draw_color", "draw:color").replace("draw_name", "draw:name"))
 
 
 ### TXT ###

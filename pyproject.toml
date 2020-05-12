@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "colourswatch"
-version = "0.1"
+version = "2020"
 description = "Use this module to read, and write to a number of colour palette file formats"
 authors = ["FredHappyface"]
 classifiers = [
@@ -29,7 +29,7 @@ python = "^3.5"
 colormath = "^3.0.0"
 gimpformats = "^2020.2.2"
 pyyaml = "^5.3.1"
-
+defusedxml = "^0.6.0"
 
 [tool.dephell.main]
 from = "pyproject.toml"

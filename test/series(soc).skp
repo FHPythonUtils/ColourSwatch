@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <palette>
 	<description type="CMYK" name="series"/>
+	<color c="0.0" m="1.0" y="1.0" k="0.7529411764705882" name="Red Bri  25%"/>
 	<color c="0.0" m="1.0" y="1.0" k="0.6901960784313725" name="Red Bri  31%"/>
 	<color c="0.0" m="1.0" y="1.0" k="0.6274509803921569" name="Red Bri  37%"/>
 	<color c="0.0" m="1.0" y="1.0" k="0.5647058823529412" name="Red Bri  44%"/>

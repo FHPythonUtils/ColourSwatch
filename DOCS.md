@@ -107,6 +107,15 @@ sRGBColor -> (r, g, b)
 
 do file io
 
+<a name=".colourswatch.io.prettify"></a>
+#### prettify
+
+```python
+prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+```
+
+Return a pretty-printed XML string for the Element.
+
 <a name=".colourswatch.io.extNotRecognised"></a>
 #### extNotRecognised
 

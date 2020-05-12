@@ -13,9 +13,6 @@
 
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
-Sadly due to a catastrophic data loss :collision: parts of this that were
-complete are now WIP.
-
 Use this module to read, and write to a number of colour palette file formats
 
 - [Compatibility](#compatibility)
