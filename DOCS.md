@@ -30,7 +30,7 @@ Convert the ColourSwatch object to a pil palette
 
 Usage:
 ```python
-image = PIL.Image.new('P',(1,1))
+image = PIL.Image.new('P', (1, 1))
 image.putpalette(colourSwatch.toPILPalette())
 ```
 

@@ -31,13 +31,13 @@ class ColourSwatch:
 
 		Usage:
 		```python
-		image = PIL.Image.new('P',(1,1))
+		image = PIL.Image.new('P', (1, 1))
 		image.putpalette(colourSwatch.toPILPalette())
 		```
 		"""
 		pilPalette = []
 		for colour in self.colours:
-			pilPalette.extend(list(colour.toRGB().get_value_tuple()))
+			pilPalette.extend(list(colour.getRGB255()))
 		if len(pilPalette) < (256*3):
 			pilPalette.extend([0] * (256*3 - len(pilPalette)))
 		else:
