@@ -28,6 +28,30 @@ this represents a colour swatch
 
 Convert the ColourSwatch object to a pil palette
 
+Usage:
+```python
+image = PIL.Image.new('P',(1,1))
+image.putpalette(colourSwatch.toPILPalette())
+```
+
+<a name=".colourswatch.colourswatch.ColourSwatch.__repr__"></a>
+#### \_\_repr\_\_
+
+```python
+ | __repr__()
+```
+
+get a string representation of the object
+
+<a name=".colourswatch.colourswatch.ColourSwatch.__eq__"></a>
+#### \_\_eq\_\_
+
+```python
+ | __eq__(other)
+```
+
+probably not ideal for getting equality - avoid using ==
+
 <a name=".colourswatch.colourswatch.Colour"></a>
 ### Colour
 
@@ -37,6 +61,24 @@ class Colour():
 ```
 
 this represents a single colour within the colour swatch
+
+<a name=".colourswatch.colourswatch.Colour.__repr__"></a>
+#### \_\_repr\_\_
+
+```python
+ | __repr__()
+```
+
+get a string representation of the object
+
+<a name=".colourswatch.colourswatch.Colour.__eq__"></a>
+#### \_\_eq\_\_
+
+```python
+ | __eq__(other)
+```
+
+equals
 
 <a name=".colourswatch.colourswatch.Colour.toRGB"></a>
 #### toRGB
@@ -101,6 +143,34 @@ get the colour as a tuple. eg. sRGBColor -> (r, g, b)
 
 get the previously converted colour as a tuple. eg.
 sRGBColor -> (r, g, b)
+
+<a name=".colourswatch.colourswatch.Colour.convertedColourToHexTuple"></a>
+#### convertedColourToHexTuple
+
+```python
+ | convertedColourToHexTuple(uppercase=False)
+```
+
+get the previously converted colour as a tuple of hexstrings. eg.
+sRGBColor -> ("ff", "ff", "ff")
+
+**Arguments**:
+
+- `uppercase` _bool, optional_ - return hex in uppercase. Defaults to False.
+  
+
+**Returns**:
+
+- `tuple` - tuple of hexstrings
+
+<a name=".colourswatch.colourswatch.Colour.getRGB255"></a>
+#### getRGB255
+
+```python
+ | getRGB255()
+```
+
+get the colour as an rgb 255 tuple
 
 <a name=".colourswatch.io"></a>
 ## colourswatch.io
@@ -218,6 +288,42 @@ saveSwatch_YAML(fileName, colourSwatch)
 ```
 
 Save a colour swatch as .YAML
+
+<a name=".colourswatch.io.openSwatch_JSON"></a>
+#### openSwatch\_JSON
+
+```python
+openSwatch_JSON(file)
+```
+
+Open a .JSON into a colour swatch
+
+<a name=".colourswatch.io.saveSwatch_JSON"></a>
+#### saveSwatch\_JSON
+
+```python
+saveSwatch_JSON(fileName, colourSwatch)
+```
+
+Save a colour swatch as .JSON
+
+<a name=".colourswatch.io.openSwatch_TOML"></a>
+#### openSwatch\_TOML
+
+```python
+openSwatch_TOML(file)
+```
+
+Open a .TOML into a colour swatch
+
+<a name=".colourswatch.io.saveSwatch_TOML"></a>
+#### saveSwatch\_TOML
+
+```python
+saveSwatch_TOML(fileName, colourSwatch)
+```
+
+Save a colour swatch as .TOML
 
 <a name=".colourswatch.io.openSwatch_COLOR"></a>
 #### openSwatch\_COLOR
@@ -398,6 +504,51 @@ saveSwatch_HPL(fileName, colourSwatch)
 ```
 
 Save a colour swatch as .HPL
+
+<a name=".colourswatch.io.openSwatch_ASE"></a>
+#### openSwatch\_ASE
+
+```python
+openSwatch_ASE(file)
+```
+
+Open an .ase into a list of colour swatches
+
+<a name=".colourswatch.io.saveSwatch_ASE"></a>
+#### saveSwatch\_ASE
+
+```python
+saveSwatch_ASE(fileName, colourSwatch)
+```
+
+Save a colour swatch as .ase
+
+<a name=".colourswatch.io.openSwatch_PNG"></a>
+#### openSwatch\_PNG
+
+```python
+openSwatch_PNG(file)
+```
+
+Open a .png into a colour swatch
+
+<a name=".colourswatch.io.openSwatch_IMAGE"></a>
+#### openSwatch\_IMAGE
+
+```python
+openSwatch_IMAGE(file)
+```
+
+open .jpg, .webp
+
+<a name=".colourswatch.io.saveSwatch_IMAGE"></a>
+#### saveSwatch\_IMAGE
+
+```python
+saveSwatch_IMAGE(fileName, colourSwatch)
+```
+
+Save a colour swatch as .png, .jpg, .webp
 
 <a name=".make"></a>
 ## make

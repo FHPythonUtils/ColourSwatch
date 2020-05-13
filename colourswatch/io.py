@@ -1,15 +1,20 @@
 """ do file io """
 
+import json
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement
 from os.path import exists
 from shlex import split
+from math import ceil
 from defusedxml.ElementTree import parse
 from defusedxml.minidom import parseString
 from gimpformats.GimpGplPalette import GimpGplPalette
 from metprint import LogType, Logger, FHFormatter
 from colormath.color_objects import sRGBColor, CMYKColor, LabColor
 import yaml
+import tomlkit
+from PIL import Image, ImageDraw
+import swatch
 
 from colourswatch.colourswatch import ColourSwatch, Colour
 
@@ -23,7 +28,8 @@ def prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\
 
 def extNotRecognised(fileName):
 	""" Output the file extension not recognised error """
-	exts = ["gpl", "yaml", "colors", "spl", "skp", "soc", "txt", "acbl", "xml", "pal", "hpl"]
+	exts = ["gpl", "yaml", "colors", "spl", "skp", "soc", "txt", "acbl", "xml",
+	"pal", "hpl", "toml", "json", "ase", "png", "jpg", "webp"]
 	Logger(FHFormatter()).logPrint("File extension is not recognised for file: " +
 	fileName + "! Must be " + "one of \"" + ", \"".join(exts) + "\"", LogType.ERROR)
 
@@ -37,7 +43,9 @@ def openColourSwatch(file):
 	functionMap = {"gpl": openSwatch_GPL, "yaml": openSwatch_YAML,
 	"colors": openSwatch_COLOR, "spl": openSwatch_SPL, "skp": openSwatch_SKP,
 	"soc": openSwatch_SOC, "txt": openSwatch_TXT, "acbl": openSwatch_ACBL,
-	"xml": openSwatch_XML, "pal": openSwatch_CDPAL, "hpl": openSwatch_HPL}
+	"xml": openSwatch_XML, "pal": openSwatch_CDPAL, "hpl": openSwatch_HPL,
+	"toml": openSwatch_TOML, "json": openSwatch_JSON, "png": openSwatch_PNG,
+	"jpg": openSwatch_IMAGE, "webp": openSwatch_IMAGE, "ase": openSwatch_ASE}
 	if not exists(file):
 		Logger(FHFormatter()).logPrint(file + " does not exist", LogType.ERROR)
 		raise FileExistsError
@@ -56,7 +64,9 @@ def saveColourSwatch(fileName, colourSwatch):
 	functionMap = {"gpl": saveSwatch_GPL, "yaml": saveSwatch_YAML,
 	"colors": saveSwatch_COLOR, "spl": saveSwatch_SPL, "skp": saveSwatch_SKP,
 	"soc": saveSwatch_SOC, "txt": saveSwatch_TXT, "acbl": saveSwatch_ACBL,
-	"xml": saveSwatch_XML, "pal": saveSwatch_CDPAL, "hpl": saveSwatch_HPL}
+	"xml": saveSwatch_XML, "pal": saveSwatch_CDPAL, "hpl": saveSwatch_HPL,
+	"toml": saveSwatch_TOML, "json": saveSwatch_JSON, "png": saveSwatch_IMAGE,
+	"jpg": saveSwatch_IMAGE, "webp": saveSwatch_IMAGE, "ase": saveSwatch_ASE}
 	fileExt = fileName.split(".")[-1].lower()
 	if fileExt not in functionMap:
 		extNotRecognised(fileName)
@@ -111,7 +121,7 @@ def openSwatch_YAML(file):
 	with open(file) as fileData:
 		project = yaml.safe_load(fileData.read())
 		swatchName = project.pop("scheme") if "scheme" in project else project.pop("name")
-		swatchAuthor = project.pop("author")
+		swatchAuthor = project.pop("author") if "author" in project else None
 	return ColourSwatch(swatchName, colours=[Colour(key,
 	colour=sRGBColor(int(project[key][0:2], 16), int(project[key][2:4], 16),
 	int(project[key][4:6], 16), True))
@@ -125,6 +135,50 @@ def saveSwatch_YAML(fileName, colourSwatch):
 			yamldict[colour.name] = "".join(["{:02x}".format(colourPart)
 			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
 		fileData.write(yaml.safe_dump(yamldict))
+
+
+### JSON ###
+def openSwatch_JSON(file):
+	""" Open a .JSON into a colour swatch """
+	with open(file) as fileData:
+		project = json.loads(fileData.read())
+		swatchName = project.pop("scheme") if "scheme" in project else project.pop("name")
+		swatchAuthor = project.pop("author") if "author" in project else None
+	return ColourSwatch(swatchName, colours=[Colour(key,
+	colour=sRGBColor(int(project[key][0:2], 16), int(project[key][2:4], 16),
+	int(project[key][4:6], 16), True))
+	for key in project], author=swatchAuthor)
+
+def saveSwatch_JSON(fileName, colourSwatch):
+	""" Save a colour swatch as .JSON """
+	with open(fileName, "w") as fileData:
+		jsondict = {"scheme": colourSwatch.name, "author": colourSwatch.author}
+		for colour in colourSwatch.colours:
+			jsondict[colour.name] = "".join(["{:02x}".format(colourPart)
+			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
+		fileData.write(json.dumps(jsondict, indent="\t"))
+
+
+### TOML ###
+def openSwatch_TOML(file):
+	""" Open a .TOML into a colour swatch """
+	with open(file) as fileData:
+		project = tomlkit.loads(fileData.read())
+		swatchName = project.pop("scheme") if "scheme" in project else project.pop("name")
+		swatchAuthor = project.pop("author") if "author" in project else None
+	return ColourSwatch(swatchName, colours=[Colour(key,
+	colour=sRGBColor(int(project[key][0:2], 16), int(project[key][2:4], 16),
+	int(project[key][4:6], 16), True))
+	for key in project], author=swatchAuthor)
+
+def saveSwatch_TOML(fileName, colourSwatch):
+	""" Save a colour swatch as .TOML """
+	with open(fileName, "w") as fileData:
+		tomldict = {"scheme": colourSwatch.name, "author": colourSwatch.author}
+		for colour in colourSwatch.colours:
+			tomldict[colour.name] = "".join(["{:02x}".format(colourPart)
+			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
+		fileData.write(tomlkit.dumps(tomldict))
 
 
 ### COLOR ###
@@ -213,9 +267,11 @@ def saveSwatch_SOC(fileName, colourSwatch):
 		root = Element("office_color_table")
 		for colour in colourSwatch.colours:
 			SubElement(root, "draw_color", {"draw_name": colour.name, "draw_color":
-			"#" + "".join(["{:02x}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())])})
+			"#" + "".join(["{:02x}".format(col) for col in
+			getWriteOutColour(colour.toRGB().get_value_tuple())])})
 		fileData.write(prettify(root, indent=" ",
-		doctype="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n").replace("<office_color_table>", "<office:color-table xmlns:office=\"http://openoffice.org/2000/office\" " +
+		doctype="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n").replace("<office_color_table>",
+		"<office:color-table xmlns:office=\"http://openoffice.org/2000/office\" " +
 		"xmlns:style=\"http://openoffice.org/2000/style\" " +
 		"xmlns:text=\"http://openoffice.org/2000/text\" " +
 		"xmlns:table=\"http://openoffice.org/2000/table\" " +
@@ -371,3 +427,71 @@ def saveSwatch_HPL(fileName, colourSwatch):
 		fileData.write("Palette\nVersion 4.0\n\n" + "\n".join([" ".join(
 			["{}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())]
 			) for colour in colourSwatch.colours]) + "\n")
+
+
+### ASE ###
+def openSwatch_ASE(file):
+	""" Open an .ase into a list of colour swatches """
+	project = swatch.parse(file)
+	swatches = []
+	for swtch in project:
+		colours = []
+		for colour in swtch["swatches"]:
+			if colour["data"]["mode"] == "LAB":
+				col = LabColor(*colour["data"]["values"])
+			elif colour["data"]["mode"] == "RGB":
+				col = sRGBColor(*colour["data"]["values"])
+			elif colour["data"]["mode"] == "CMYK":
+				col = CMYKColor(*colour["data"]["values"])
+			else:
+				col = sRGBColor(colour["data"]["values"][0], colour["data"]["values"][0],
+				colour["data"]["values"][0])
+			colours.append(Colour(colour["name"], colour=col))
+		swatches.append(ColourSwatch(swtch["name"], colours))
+	return swatches
+
+def saveSwatch_ASE(fileName, colourSwatch):
+	""" Save a colour swatch as .ase """
+	raise NotImplementedError
+
+
+### IMAGE ###
+def openSwatch_PNG(file):
+	"""Open a .png into a colour swatch """
+	colours = []
+	project = Image.open(file).convert("RGB")
+	rawColours = set(project.getcolors(maxcolors=256**3))
+	for rCol in rawColours:
+		colours.append(Colour("colour{}".format(len(colours)),
+		colour=sRGBColor(rCol[1][0], rCol[1][1], rCol[1][2], True),
+		nameNull=True))
+	return getSwatchFromFileName(file, colours)
+
+def openSwatch_IMAGE(file):
+	""" open .jpg, .webp """
+	# Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)
+	colours = []
+	project = Image.open(file).convert("RGB")
+	cols, rows = int(project.size[0] / 16), int(project.size[1] / 16)
+	for row in range(rows):
+		for col in range(cols):
+			rCol = project.getpixel((col*16 + 8, row*16 + 8))
+			colours.append(Colour("colour{}".format(len(colours)),
+			colour=sRGBColor(rCol[0], rCol[1], rCol[2], True),
+			nameNull=True))
+	return getSwatchFromFileName(file, colours)
+
+def saveSwatch_IMAGE(fileName, colourSwatch):
+	""" Save a colour swatch as .png, .jpg, .webp """
+	# Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)
+	colours = colourSwatch.colours
+	rows = ceil(len(colours)/16)
+	image = Image.new("RGB", (256, 16*rows), colours[-1].getRGB255())
+	draw = ImageDraw.Draw(image)
+	index = 0
+	for row in range(rows):
+		for col in range(16):
+			draw.rectangle([col*16, row*16, (col+1)*16, (row+1)*16],
+			fill=colours[index].getRGB255(), width=0)
+			index += 1 if index < len(colours) - 1 else 0
+	image.save(fileName)

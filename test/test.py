@@ -5,8 +5,10 @@ import os
 from pathlib import Path
 THISDIR = str(Path(__file__).resolve().parent)
 sys.path.insert(0, os.path.dirname(THISDIR))
+from json import loads
 from comparexml import compareFiles
 from yaml import safe_load
+from tomlkit import loads as tloads
 import colourswatch.io
 
 #pylint: disable=missing-function-docstring
@@ -25,7 +27,7 @@ def test_gpl():
 def test_yaml():
 	yaml = colourswatch.io.openColourSwatch(THISDIR + "/base24.yaml")
 	colourswatch.io.saveColourSwatch(THISDIR + "/base24(yaml).gpl", yaml)
-	colourswatch.io.saveColourSwatch(THISDIR + "/base(yaml).yaml", yaml)
+	colourswatch.io.saveColourSwatch(THISDIR + "/base24(yaml).yaml", yaml)
 	with open(THISDIR + "/base24.yaml") as yaml:
 		source = safe_load(yaml.read())
 	with open(THISDIR + "/base24(yaml).yaml") as yaml:
@@ -132,6 +134,59 @@ def test_hpl():
 	source.close()
 	dest.close()
 
+# TOML
+def test_toml():
+	toml = colourswatch.io.openColourSwatch(THISDIR + "/base24.toml")
+	colourswatch.io.saveColourSwatch(THISDIR + "/base24(toml).gpl", toml)
+	colourswatch.io.saveColourSwatch(THISDIR + "/base24(toml).toml", toml)
+	with open(THISDIR + "/base24.toml") as toml:
+		source = tloads(toml.read())
+	with open(THISDIR + "/base24(toml).toml") as toml:
+		dest = tloads(toml.read())
+	assert source == dest
+
+# JSON
+def test_json():
+	json = colourswatch.io.openColourSwatch(THISDIR + "/base24.json")
+	colourswatch.io.saveColourSwatch(THISDIR + "/base24(json).gpl", json)
+	colourswatch.io.saveColourSwatch(THISDIR + "/base24(json).json", json)
+	with open(THISDIR + "/base24.json") as json:
+		source = loads(json.read())
+	with open(THISDIR + "/base24(json).json") as json:
+		dest = loads(json.read())
+	assert source == dest
+
+# PNG
+def test_png():
+	png = colourswatch.io.openColourSwatch(THISDIR + "/colours.png")
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(png).gpl", png)
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(png).png", png)
+	compare = colourswatch.io.openColourSwatch(THISDIR + "/colours(png).png")
+	assert len(png.colours) == len(compare.colours)
+
+# JPG
+def test_jpg():
+	jpg = colourswatch.io.openColourSwatch(THISDIR + "/colours.jpg")
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(jpg).gpl", jpg)
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(jpg).jpg", jpg)
+	compare = colourswatch.io.openColourSwatch(THISDIR + "/colours(jpg).jpg")
+	assert len(jpg.colours) == len(compare.colours)
+
+# WEBP
+def test_webp():
+	webp = colourswatch.io.openColourSwatch(THISDIR + "/colours.webp")
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(webp).gpl", webp)
+	colourswatch.io.saveColourSwatch(THISDIR + "/colours(webp).webp", webp)
+	compare = colourswatch.io.openColourSwatch(THISDIR + "/colours(webp).webp")
+	assert len(webp.colours) == len(compare.colours)
+
+# ASE
+def test_ase():
+	# ase can hold multiple swatches so openColourSwatch will return a list of these
+	ase = colourswatch.io.openColourSwatch(THISDIR + "/solarized.ase")[0]
+	colourswatch.io.saveColourSwatch(THISDIR + "/solarized(ase).gpl", ase)
+
+
 if __name__ == "__main__":
 	test_gpl()
 	test_yaml()
@@ -145,3 +200,9 @@ if __name__ == "__main__":
 	test_cdpal()
 	test_psppal()
 	test_hpl()
+	test_toml()
+	test_json()
+	test_png()
+	test_jpg()
+	test_webp()
+	test_ase()

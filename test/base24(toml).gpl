@@ -1,0 +1,28 @@
+GIMP Palette
+Name: One Dark
+Columns: 16
+#
+ 40  44  52	base00
+ 63  68  81	base01
+ 79  86 102	base02
+ 84  88  98	base03
+145 150 161	base04
+171 178 191	base05
+230 230 230	base06
+255 255 255	base07
+224  85  97	base08
+209 143  82	base09
+230 185 101	base0A
+140 194 101	base0B
+ 66 179 194	base0C
+ 74 165 240	base0D
+193  98 222	base0E
+191  64  52	base0F
+ 33  37  43	base10
+ 24  26  31	base11
+255  97 110	base12
+240 164  93	base13
+165 224 117	base14
+ 76 209 224	base15
+ 77 196 255	base16
+222 115 255	base17

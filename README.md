@@ -16,6 +16,9 @@
 Use this module to read, and write to a number of colour palette file formats
 
 - [Compatibility](#compatibility)
+	- [*](#ul-lili-ul)
+	- [&](#)
+	- [$](#-1)
 - [Docs](#docs)
 - [Install With PIP](#install-with-pip)
 - [Language information](#language-information)
@@ -59,7 +62,25 @@ the case, please open an issue and I will fix the tables.
 |PaintShopPro|.pal|:heavy_check_mark:|:heavy_check_mark:|
 |CorelDraw|.pal|:heavy_check_mark:|:heavy_check_mark:|
 |ColdFusion|.hpl|:heavy_check_mark:|:heavy_check_mark:|
+|*|.yaml|:heavy_check_mark:|:heavy_check_mark:|
+|*|.toml|:heavy_check_mark:|:heavy_check_mark:|
+|*|.json|:heavy_check_mark:|:heavy_check_mark:|
+|&|.png|:heavy_check_mark:|:heavy_check_mark:|
+|$|.jpg|:heavy_check_mark:|:heavy_check_mark:|
+|$|.webp|:heavy_check_mark:|:heavy_check_mark:|
+|Adobe Swatch Exchange|.ase|:heavy_check_mark:|:x:|
 
+### *
+Files require a name (`name` or `scheme`) and an author is optional (`author`)
+
+### &
+Support for any PNG when reading
+
+### $
+Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)
+e.g.
+
+<img src="test/colours.jpg" width="256">
 
 ## Docs
 See the [Docs](/DOCS.md) for more information.
