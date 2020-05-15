@@ -550,6 +550,24 @@ saveSwatch_IMAGE(fileName, colourSwatch)
 
 Save a colour swatch as .png, .jpg, .webp
 
+<a name=".colourswatch.io.openSwatch_SVG"></a>
+#### openSwatch\_SVG
+
+```python
+openSwatch_SVG(file)
+```
+
+Open a .svg into a colour swatch
+
+<a name=".colourswatch.io.saveSwatch_SVG"></a>
+#### saveSwatch\_SVG
+
+```python
+saveSwatch_SVG(fileName, colourSwatch)
+```
+
+Save a colour swatch as .svg
+
 <a name=".make"></a>
 ## make
 

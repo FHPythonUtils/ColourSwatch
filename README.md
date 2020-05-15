@@ -66,6 +66,7 @@ the case, please open an issue and I will fix the tables.
 |*|.toml|:heavy_check_mark:|:heavy_check_mark:|
 |*|.json|:heavy_check_mark:|:heavy_check_mark:|
 |&|.png|:heavy_check_mark:|:heavy_check_mark:|
+|&|.svg|:heavy_check_mark:|:heavy_check_mark:|
 |$|.jpg|:heavy_check_mark:|:heavy_check_mark:|
 |$|.webp|:heavy_check_mark:|:heavy_check_mark:|
 |Adobe Swatch Exchange|.ase|:heavy_check_mark:|:x:|
@@ -74,7 +75,7 @@ the case, please open an issue and I will fix the tables.
 Files require a name (`name` or `scheme`) and an author is optional (`author`)
 
 ### &
-Support for any PNG when reading
+Support for any PNG and any SVG when reading
 
 ### $
 Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)

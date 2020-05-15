@@ -2,6 +2,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2020.1.2 - 2020/05/15
+- Preserve order of png palettes
+- Add support for svg
+
 ## 2020.1.1 - 2020/05/13
 - Bugfix `toPILPalette`
 

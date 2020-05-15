@@ -123,7 +123,7 @@ class Colour:
 			tuple: tuple of hexstrings
 		"""
 		return tuple(["{:02X}".format(colourPart) if uppercase else "{:02x}".format(
-		colourPart) for colourPart in self.convertedColourToTuple()])
+		colourPart) for colourPart in self.getRGB255()])
 
 	def getRGB255(self):
 		""" get the colour as an rgb 255 tuple """

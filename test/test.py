@@ -186,6 +186,11 @@ def test_ase():
 	ase = colourswatch.io.openColourSwatch(THISDIR + "/solarized.ase")[0]
 	colourswatch.io.saveColourSwatch(THISDIR + "/solarized(ase).gpl", ase)
 
+# SVG
+def test_svg():
+	svg = colourswatch.io.openColourSwatch(THISDIR + "/ai.svg")
+	colourswatch.io.saveColourSwatch(THISDIR + "/ai(svg).gpl", svg)
+	colourswatch.io.saveColourSwatch(THISDIR + "/ai(svg).svg", svg)
 
 if __name__ == "__main__":
 	test_gpl()
@@ -206,3 +211,4 @@ if __name__ == "__main__":
 	test_jpg()
 	test_webp()
 	test_ase()
+	test_svg()

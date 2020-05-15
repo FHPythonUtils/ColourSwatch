@@ -6,6 +6,7 @@ from xml.etree.ElementTree import Element, SubElement
 from os.path import exists
 from shlex import split
 from math import ceil
+from re import findall
 from defusedxml.ElementTree import parse
 from defusedxml.minidom import parseString
 from gimpformats.GimpGplPalette import GimpGplPalette
@@ -29,7 +30,7 @@ def prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\
 def extNotRecognised(fileName):
 	""" Output the file extension not recognised error """
 	exts = ["gpl", "yaml", "colors", "spl", "skp", "soc", "txt", "acbl", "xml",
-	"pal", "hpl", "toml", "json", "ase", "png", "jpg", "webp"]
+	"pal", "hpl", "toml", "json", "ase", "png", "jpg", "webp", "svg"]
 	Logger(FHFormatter()).logPrint("File extension is not recognised for file: " +
 	fileName + "! Must be " + "one of \"" + ", \"".join(exts) + "\"", LogType.ERROR)
 
@@ -45,7 +46,8 @@ def openColourSwatch(file):
 	"soc": openSwatch_SOC, "txt": openSwatch_TXT, "acbl": openSwatch_ACBL,
 	"xml": openSwatch_XML, "pal": openSwatch_CDPAL, "hpl": openSwatch_HPL,
 	"toml": openSwatch_TOML, "json": openSwatch_JSON, "png": openSwatch_PNG,
-	"jpg": openSwatch_IMAGE, "webp": openSwatch_IMAGE, "ase": openSwatch_ASE}
+	"jpg": openSwatch_IMAGE, "webp": openSwatch_IMAGE, "ase": openSwatch_ASE,
+	"svg": openSwatch_SVG}
 	if not exists(file):
 		Logger(FHFormatter()).logPrint(file + " does not exist", LogType.ERROR)
 		raise FileExistsError
@@ -66,7 +68,8 @@ def saveColourSwatch(fileName, colourSwatch):
 	"soc": saveSwatch_SOC, "txt": saveSwatch_TXT, "acbl": saveSwatch_ACBL,
 	"xml": saveSwatch_XML, "pal": saveSwatch_CDPAL, "hpl": saveSwatch_HPL,
 	"toml": saveSwatch_TOML, "json": saveSwatch_JSON, "png": saveSwatch_IMAGE,
-	"jpg": saveSwatch_IMAGE, "webp": saveSwatch_IMAGE, "ase": saveSwatch_ASE}
+	"jpg": saveSwatch_IMAGE, "webp": saveSwatch_IMAGE, "ase": saveSwatch_ASE,
+	"svg": saveSwatch_SVG}
 	fileExt = fileName.split(".")[-1].lower()
 	if fileExt not in functionMap:
 		extNotRecognised(fileName)
@@ -460,10 +463,12 @@ def openSwatch_PNG(file):
 	"""Open a .png into a colour swatch """
 	colours = []
 	project = Image.open(file).convert("RGB")
-	rawColours = set(project.getcolors(maxcolors=256**3))
+	seen = set()
+	pixels = list(project.getdata())
+	rawColours = [x for x in pixels if x not in seen and not seen.add(x)]
 	for rCol in rawColours:
 		colours.append(Colour("colour{}".format(len(colours)),
-		colour=sRGBColor(rCol[1][0], rCol[1][1], rCol[1][2], True),
+		colour=sRGBColor(rCol[0], rCol[1], rCol[2], True),
 		nameNull=True))
 	return getSwatchFromFileName(file, colours)
 
@@ -495,3 +500,54 @@ def saveSwatch_IMAGE(fileName, colourSwatch):
 			fill=colours[index].getRGB255(), width=0)
 			index += 1 if index < len(colours) - 1 else 0
 	image.save(fileName)
+
+
+### SVG ###
+def openSwatch_SVG(file):
+	"""Open a .svg into a colour swatch """
+	colours = []
+	rCols = set()
+	with open(file) as fileData:
+		# get a list of colours #rgb, #rrggbb. rgb(r,g,b). rgb(r%,g%,b%)
+		rColours = findall(r"(#......)|(#...)|rgb\((.*?,.*?,.*?)\)", fileData.read())
+		for rColour in rColours:
+			if len(rColour[0]) > 0: # #rrggbb
+				col = (int(rColour[0][1:3], 16)/255, int(rColour[0][3:5], 16)/255,
+				int(rColour[0][5:7], 16)/255)
+			elif len(rColour[1]) > 0: # #rgb
+				col = (int(rColour[1][1], 16)/16, int(rColour[1][2], 16)/16,
+				int(rColour[1][3], 16)/15)
+			else:
+				r, g, b = rColour[2].split(",")
+				r, g, b = r.strip(), g.strip(), b.strip()
+				if r[-1] == "%": # rgb(r%,g%,b%)
+					col = (int(r[:-1])/100, int(g[:-1])/100, int(b[:-1])/100)
+				else: # rgb(r,g,b)
+					col = (int(r)/255, int(g)/255, int(b)/255)
+			if col not in rCols:
+				rCols.add(col)
+				colours.append(Colour("colour{}".format(len(colours)),
+				sRGBColor(col[0], col[1], col[2]), True))
+	return getSwatchFromFileName(file, colours)
+
+def saveSwatch_SVG(fileName, colourSwatch):
+	""" Save a colour swatch as .svg"""
+	colours = colourSwatch.colours
+	rows = ceil(len(colours)/16)
+	with open(fileName, "w") as fileData:
+		colours[-1].toRGB()
+		data = [("<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"{0}\" " +
+		"width=\"256\" version=\"1.1\">\n\t<rect style=\"fill:#{1}\" " +
+		"height=\"{0}\" width=\"256\" x=\"0\" y=\"0\"/>").format(rows*16, "".join(colours[-1].convertedColourToHexTuple()))]
+		index = 0
+		for row in range(rows):
+			for col in range(16):
+				colours[index].toRGB()
+				data.append("\t<rect style=\"fill:#{}\" height=\"16\" width=\"16\" x=\"{}\" y=\"{}\"/>".format(
+				"".join(colours[index].convertedColourToHexTuple()), col*16, row*16))
+				if index < len(colours) - 1:
+					index += 1
+				else:
+					break
+		data.append("</svg>\n")
+		fileData.write("\n".join(data))
