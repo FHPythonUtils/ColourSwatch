@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "colourswatch"
-version = "2020.1.2"
+version = "2020.1.3"
 description = "Use this module to read, and write to a number of colour palette file formats"
 authors = ["FredHappyface"]
 classifiers = [
@@ -27,7 +27,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.5"
 colormath = "^3.0.0"
-gimpformats = "^2020.2.2"
+gimpformats = "^2020.2.4"
 pyyaml = "^5.3.1"
 defusedxml = "^0.6.0"
 pillow = "^7.1.2"
