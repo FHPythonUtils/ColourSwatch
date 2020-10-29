@@ -4,7 +4,8 @@ ability to convert to to a pillow palette.
 
 #pylint: disable=too-few-public-methods
 #pylint: disable=too-many-arguments
-
+from __future__ import annotations
+from typing import Optional
 from colormath.color_conversions import convert_color
 from colormath.color_objects import (
     LabColor,
@@ -12,21 +13,23 @@ from colormath.color_objects import (
 	HSVColor,
 	HSLColor,
     sRGBColor,
+	ColorBase,
 )
 
 
 class ColourSwatch:
 	""" this represents a colour swatch """
-	def __init__(self, name, colours=None, swatchId=None, description=None,
-	swatchCopyright=None, author=None):
-		self.id = swatchId
+	def __init__(self, name: str, colours: Optional[list[Colour]]=None,
+	swatchId: Optional[str]=None, description: Optional[str]=None,
+	swatchCopyright: Optional[str]=None, author: Optional[str]=None):
+		self.swatchId = swatchId
 		self.name = name
 		self.description = description
 		self.copyright = swatchCopyright
 		self.colours = colours if colours is not None else []
 		self.author = author
 
-	def toPILPalette(self):
+	def toPILPalette(self) -> list[int]:
 		""" Convert the ColourSwatch object to a pil palette
 
 		Usage:
@@ -44,23 +47,25 @@ class ColourSwatch:
 			pilPalette = pilPalette[:256*3]
 		return pilPalette
 
-	def __repr__(self):
+	def __repr__(self) -> str:
 		""" get a string representation of the object """
 		return "<ColourSwatch \"" + self.name + "\" colours:" + str(len(self.colours)) + ">"
 
-	def __eq__(self, other):
+	def __eq__(self, other: ColourSwatch):
 		""" probably not ideal for getting equality - avoid using == """
 		if len(self.colours) != len(other.colours):
 			return False
+		return True
 
 class Colour:
 	""" this represents a single colour within the colour swatch """
-	def __init__(self, name, colour=None, nameNull=False, alpha=1.0):
+	def __init__(self, name: str, colour: Optional[ColorBase]=None,
+	nameNull: bool=False, alpha: float=1.0):
 		self.name = name
 		self.nameNull = nameNull
 		self.colour = colour
 		self.alpha = alpha
-		self.convertedColour = []
+		self.convertedColour: Optional[ColorBase] = None
 
 	def __repr__(self):
 		""" get a string representation of the object """
@@ -68,51 +73,51 @@ class Colour:
 		self.toRGB()
 		rString = "<Colour \"" + self.name + \
 		"\" RGB:(hex=#" + "".join(self.convertedColourToHexTuple()) + ", dec=" + \
-		", ".join(self.convertedColourToTuple()) + ")>"
+		", ".join([str(col) for col in self.convertedColourToTuple()]) + ")>"
 		self.convertedColour = bConverted # and restore
 		return rString
 
-	def __eq__(self, other):
+	def __eq__(self, other: Colour) -> bool:
 		""" equals """
 		return self.toRGB() == other.toRGB()
 
-	def toRGB(self):
+	def toRGB(self) -> sRGBColor:
 		""" convert to rgb and dump a copy in self.convertedColour """
 		self.convertedColour = convert_color(self.colour, sRGBColor)
 		return self.convertedColour
 
-	def toCMYK(self):
+	def toCMYK(self) -> CMYKColor:
 		""" convert to cmyk and dump a copy in self.convertedColour """
 		self.convertedColour = convert_color(self.colour, CMYKColor)
 		return self.convertedColour
 
-	def toHSV(self):
+	def toHSV(self) -> HSVColor:
 		""" convert to hsv and dump a copy in self.convertedColour """
 		self.convertedColour = convert_color(self.colour, HSVColor)
 		return self.convertedColour
 
-	def toHSL(self):
+	def toHSL(self) -> HSLColor:
 		""" convert to hsl and dump a copy in self.convertedColour """
 		self.convertedColour = convert_color(self.colour, HSLColor)
 		return self.convertedColour
 
-	def toLAB(self):
+	def toLAB(self) -> LabColor:
 		""" convert to lab and dump a copy in self.convertedColour """
 		self.convertedColour = convert_color(self.colour, LabColor)
 		return self.convertedColour
 
-	def colorToTuple(self):
+	def colorToTuple(self) -> tuple[float, ...]:
 		""" get the colour as a tuple. eg. sRGBColor -> (r, g, b) """
 		return self.colour.get_value_tuple()
 
 
-	def convertedColourToTuple(self):
+	def convertedColourToTuple(self) -> tuple[float, ...]:
 		""" get the previously converted colour as a tuple. eg.
 		sRGBColor -> (r, g, b)
 		"""
 		return self.convertedColour.get_value_tuple()
 
-	def convertedColourToHexTuple(self, uppercase=False):
+	def convertedColourToHexTuple(self, uppercase: bool=False) -> tuple[str, ...]:
 		"""get the previously converted colour as a tuple of hexstrings. eg.
 		sRGBColor -> ("ff", "ff", "ff")
 
@@ -125,7 +130,13 @@ class Colour:
 		return tuple(["{:02X}".format(colourPart) if uppercase else "{:02x}".format(
 		colourPart) for colourPart in self.getRGB255()])
 
-	def getRGB255(self):
+	def getRGB255(self) -> tuple[int, int, int]:
 		""" get the colour as an rgb 255 tuple """
 		self.toRGB()
 		return tuple([int(colourPart*255) for colourPart in self.convertedColourToTuple()])
+
+
+	def getRGB255Hex(self, uppercase: bool=False) -> tuple[str, str, str]:
+		""" get the colour as an rgb 255 tuple in hex """
+		self.toRGB()
+		return self.convertedColourToHexTuple(uppercase)

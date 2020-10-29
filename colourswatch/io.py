@@ -1,6 +1,10 @@
 """ do file io """
 
+# pylint: disable=invalid-name
+
+from __future__ import annotations
 import json
+from typing import Any
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement
 from os.path import exists
@@ -9,17 +13,17 @@ from math import ceil
 from re import findall
 from defusedxml.ElementTree import parse
 from defusedxml.minidom import parseString
-from gimpformats.GimpGplPalette import GimpGplPalette
 from metprint import LogType, Logger, FHFormatter
-from colormath.color_objects import sRGBColor, CMYKColor, LabColor
+from colormath.color_objects import ColorBase, sRGBColor, CMYKColor, LabColor
 import yaml
 import tomlkit
 from PIL import Image, ImageDraw
 import swatch
 
 from colourswatch.colourswatch import ColourSwatch, Colour
+from colourswatch.GimpGplPalette import GimpGplPalette
 
-def prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\"?>"):
+def prettify(elem: Element, indent: str="\t", doctype: str="<?xml version=\"1.0\" encoding=\"utf-8\"?>"):
 	"""Return a pretty-printed XML string for the Element.  """
 	rough_string = ElementTree.tostring(elem, 'utf-8')
 	reparsed = parseString(rough_string)
@@ -27,17 +31,17 @@ def prettify(elem, indent="\t", doctype="<?xml version=\"1.0\" encoding=\"utf-8\
 	reparsed.insert(0, doctype)
 	return "\n".join(reparsed)
 
-def extNotRecognised(fileName):
+def extNotRecognised(fileName: str):
 	""" Output the file extension not recognised error """
 	exts = ["gpl", "yaml", "colors", "spl", "skp", "soc", "txt", "acbl", "xml",
 	"pal", "hpl", "toml", "json", "ase", "png", "jpg", "webp", "svg"]
 	Logger(FHFormatter()).logPrint("File extension is not recognised for file: " +
 	fileName + "! Must be " + "one of \"" + ", \"".join(exts) + "\"", LogType.ERROR)
 
-def openColourSwatch(file):
+def openColourSwatch(file: str) -> ColourSwatch:
 	"""Open a colour swatch file into a layer image object
 	Args:
-		file (string): path/ filename
+		file (str): path/ filename
 	Returns:
 		ColourSwatch: a colour swatch object
 	"""
@@ -57,10 +61,10 @@ def openColourSwatch(file):
 		raise ValueError
 	return functionMap[fileExt](file)
 
-def saveColourSwatch(fileName, colourSwatch):
+def saveColourSwatch(fileName: str, colourSwatch: ColourSwatch):
 	"""Save a colour swatch to a file
 	Args:
-		fileName (string): path/ filename
+		fileName (str): path/ filename
 		colourSwatch (ColourSwatch): the colour swatch to save
 	"""
 	functionMap = {"gpl": saveSwatch_GPL, "yaml": saveSwatch_YAML,
@@ -77,7 +81,8 @@ def saveColourSwatch(fileName, colourSwatch):
 	return functionMap[fileExt](fileName, colourSwatch)
 
 
-def getColourFromLine(line, lineno, colourSpaceSize=3, colourSpace=sRGBColor, divider=255):
+def getColourFromLine(line: str, lineno: int, colourSpaceSize: int=3,
+colourSpace: ColorBase=sRGBColor, divider: int=255):
 	""" getColourFromLine """
 	parts = line.split(None)
 	return Colour(" ".join(parts[colourSpaceSize:]) if len(parts) > colourSpaceSize
@@ -86,17 +91,17 @@ def getColourFromLine(line, lineno, colourSpaceSize=3, colourSpace=sRGBColor, di
 	nameNull=len(parts) <= colourSpaceSize)
 
 
-def getSwatchFromFileName(file, colours):
+def getSwatchFromFileName(file: str, colours: list[Colour]):
 	""" getSwatchFromFileName """
 	return ColourSwatch(file.replace("\\", "/").split("/")[-1].split(".")[0], colours)
 
-def getWriteOutColour(colour, convertType=int, multiplier=255):
+def getWriteOutColour(colour: list[Any], convertType: type=int, multiplier: int=255) -> list[Any]:
 	""" getWriteOutColour """
 	return [convertType(col * multiplier) for col in colour]
 
 
 ### GPL ###
-def openSwatch_GPL(file):
+def openSwatch_GPL(file: str):
 	""" Open a .GPL into a colour swatch """
 	project = GimpGplPalette(file)
 	colours = []
@@ -107,7 +112,7 @@ def openSwatch_GPL(file):
 		nameNull=project.colorNames[index] is None))
 	return ColourSwatch(project.name, colours=colours)
 
-def saveSwatch_GPL(fileName, colourSwatch):
+def saveSwatch_GPL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .GPL """
 	project = GimpGplPalette()
 	project.name = colourSwatch.name
@@ -119,7 +124,7 @@ def saveSwatch_GPL(fileName, colourSwatch):
 
 
 ### YAML ###
-def openSwatch_YAML(file):
+def openSwatch_YAML(file: str) -> ColourSwatch:
 	""" Open a .YAML into a colour swatch """
 	with open(file) as fileData:
 		project = yaml.safe_load(fileData.read())
@@ -130,18 +135,17 @@ def openSwatch_YAML(file):
 	int(project[key][4:6], 16), True))
 	for key in project], author=swatchAuthor)
 
-def saveSwatch_YAML(fileName, colourSwatch):
+def saveSwatch_YAML(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .YAML """
 	with open(fileName, "w") as fileData:
 		yamldict = {"scheme": colourSwatch.name, "author": colourSwatch.author}
 		for colour in colourSwatch.colours:
-			yamldict[colour.name] = "".join(["{:02x}".format(colourPart)
-			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
+			yamldict[colour.name] = "".join(colour.getRGB255Hex())
 		fileData.write(yaml.safe_dump(yamldict))
 
 
 ### JSON ###
-def openSwatch_JSON(file):
+def openSwatch_JSON(file: str) -> ColourSwatch:
 	""" Open a .JSON into a colour swatch """
 	with open(file) as fileData:
 		project = json.loads(fileData.read())
@@ -152,18 +156,17 @@ def openSwatch_JSON(file):
 	int(project[key][4:6], 16), True))
 	for key in project], author=swatchAuthor)
 
-def saveSwatch_JSON(fileName, colourSwatch):
+def saveSwatch_JSON(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .JSON """
 	with open(fileName, "w") as fileData:
 		jsondict = {"scheme": colourSwatch.name, "author": colourSwatch.author}
 		for colour in colourSwatch.colours:
-			jsondict[colour.name] = "".join(["{:02x}".format(colourPart)
-			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
+			jsondict[colour.name] = "".join(colour.getRGB255Hex())
 		fileData.write(json.dumps(jsondict, indent="\t"))
 
 
 ### TOML ###
-def openSwatch_TOML(file):
+def openSwatch_TOML(file: str) -> ColourSwatch:
 	""" Open a .TOML into a colour swatch """
 	with open(file) as fileData:
 		project = tomlkit.loads(fileData.read())
@@ -174,18 +177,17 @@ def openSwatch_TOML(file):
 	int(project[key][4:6], 16), True))
 	for key in project], author=swatchAuthor)
 
-def saveSwatch_TOML(fileName, colourSwatch):
+def saveSwatch_TOML(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .TOML """
 	with open(fileName, "w") as fileData:
 		tomldict = {"scheme": colourSwatch.name, "author": colourSwatch.author}
 		for colour in colourSwatch.colours:
-			tomldict[colour.name] = "".join(["{:02x}".format(colourPart)
-			for colourPart in getWriteOutColour(colour.toRGB().get_value_tuple())])
+			tomldict[colour.name] = "".join(colour.getRGB255Hex())
 		fileData.write(tomlkit.dumps(tomldict))
 
 
 ### COLOR ###
-def openSwatch_COLOR(file):
+def openSwatch_COLOR(file: str) -> ColourSwatch:
 	""" Open a .COLOR into a colour swatch """
 	with open(file) as fileData:
 		colours = []
@@ -194,16 +196,15 @@ def openSwatch_COLOR(file):
 	return getSwatchFromFileName(file, colours)
 
 
-def saveSwatch_COLOR(fileName, colourSwatch):
+def saveSwatch_COLOR(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .COLOR """
 	with open(fileName, "w") as fileData:
-		fileData.write("KDE RGB Palette\n" + "\n".join([" ".join(
-			["{}".format(col) for col in getWriteOutColour(colour.toRGB().get_value_tuple())]
-			) + "\t{}".format(colour.name)	for colour in colourSwatch.colours]) + "\n")
+		fileData.write("KDE RGB Palette\n" + "\n".join([" ".join([str(col) for col in colour.getRGB255()]
+		) + "\t{}".format(colour.name)	for colour in colourSwatch.colours]) + "\n")
 
 
 ### SPL ###
-def openSwatch_SPL(file):
+def openSwatch_SPL(file: str) -> ColourSwatch:
 	""" Open a .SPL into a colour swatch """
 	with open(file) as fileData:
 		colours = []
@@ -211,7 +212,7 @@ def openSwatch_SPL(file):
 			colours.append(getColourFromLine(line, lineno, divider=1))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_SPL(fileName, colourSwatch):
+def saveSwatch_SPL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .SPL """
 	with open(fileName, "w") as fileData:
 		fileData.write("##Sketch RGBPalette 0\n" + "\n".join([" ".join(
@@ -220,7 +221,7 @@ def saveSwatch_SPL(fileName, colourSwatch):
 
 
 ### SKP ###
-def openSwatch_SKP(file):
+def openSwatch_SKP(file: str) -> ColourSwatch:
 	""" Open a .SKP into a colour swatch """
 	with open(file) as fileData:
 		xmlrep = parse(fileData).getroot()
@@ -238,7 +239,7 @@ def openSwatch_SKP(file):
 	return ColourSwatch(xmlrep[0].attrib["name"], colours)
 
 
-def saveSwatch_SKP(fileName, colourSwatch):
+def saveSwatch_SKP(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .SKP """
 	with open(fileName, "w") as fileData:
 		root = Element("palette")
@@ -251,7 +252,7 @@ def saveSwatch_SKP(fileName, colourSwatch):
 
 
 ### SOC ###
-def openSwatch_SOC(file):
+def openSwatch_SOC(file: str) -> ColourSwatch:
 	""" Open a .SOC into a colour swatch """
 	with open(file) as fileData:
 		xmlrep = parse(fileData).getroot()
@@ -264,7 +265,7 @@ def openSwatch_SOC(file):
 	return getSwatchFromFileName(file, colours)
 
 
-def saveSwatch_SOC(fileName, colourSwatch):
+def saveSwatch_SOC(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .SOC """
 	with open(fileName, "w") as fileData:
 		root = Element("office_color_table")
@@ -294,7 +295,7 @@ def saveSwatch_SOC(fileName, colourSwatch):
 
 
 ### TXT ###
-def openSwatch_TXT(file):
+def openSwatch_TXT(file: str) -> ColourSwatch:
 	""" Open a .TXT into a colour swatch """
 	with open(file) as fileData:
 		colours = []
@@ -305,7 +306,7 @@ def openSwatch_TXT(file):
 				int(line[4:6], 16), True), nameNull=True, alpha=int(line[6:8], 16)/255))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_TXT(fileName, colourSwatch):
+def saveSwatch_TXT(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .TXT """
 	with open(fileName, "w") as fileData:
 		fileData.write("; paint.net Palette File\n; Lines that start with a " +
@@ -316,13 +317,12 @@ def saveSwatch_TXT(fileName, colourSwatch):
 		"ninety six (96) colors. If there are less than this, the remaining " +
 		"color\n; slots will be set to white (FFFFFFFF). If there are more, " +
 		"then the remaining colors will be ignored.\n" + "\n".join(
-			["".join(["{:02X}".format(col) for col in getWriteOutColour(
-				colour.toRGB().get_value_tuple())]) +
+			["".join(colour.getRGB255Hex(True)) +
 				"{:02X}".format(int(colour.alpha*255)) for colour in colourSwatch.colours]) + "\n")
 
 
 ### ACBL ###
-def openSwatch_ACBL(file):
+def openSwatch_ACBL(file: str) -> ColourSwatch:
 	""" Open a .ACBL into a colour swatch """
 	with open(file) as fileData:
 		xmlrep = parse(fileData).getroot()
@@ -340,13 +340,13 @@ def openSwatch_ACBL(file):
 			colours.append(Colour(cName, cColour))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_ACBL(fileName, colourSwatch):
+def saveSwatch_ACBL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .ACBL """
 	raise NotImplementedError
 
 
 ### XML ###
-def openSwatch_XML(file):
+def openSwatch_XML(file: str) -> ColourSwatch:
 	""" Open a .XML into a colour swatch """
 	with open(file) as fileData:
 		xmlrep = parse(fileData).getroot()
@@ -361,7 +361,7 @@ def openSwatch_XML(file):
 			colours.append(Colour(cName, cColour))
 	return ColourSwatch(xmlrep.attrib["Name"], colours)
 
-def saveSwatch_XML(fileName, colourSwatch):
+def saveSwatch_XML(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .XML """
 	with open(fileName, "w") as fileData:
 		root = Element("SCRIBUSCOLORS", {"Name": colourSwatch.name})
@@ -373,7 +373,7 @@ def saveSwatch_XML(fileName, colourSwatch):
 
 
 ### PaintShopPro PAL ###
-def openSwatch_PSPPAL(file):
+def openSwatch_PSPPAL(file: str) -> ColourSwatch:
 	""" Open a PaintShopPro .PAL into a colour swatch """
 	with open(file) as fileData:
 		colours = []
@@ -381,7 +381,7 @@ def openSwatch_PSPPAL(file):
 			colours.append(getColourFromLine(line, lineno))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_PSPPAL(fileName, colourSwatch):
+def saveSwatch_PSPPAL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as PaintShopPro .PAL """
 	with open(fileName, "w") as fileData:
 		fileData.write("JASC-PAL\n0100\n{}\n".format(len(colourSwatch.colours)) + "\n".join([" ".join(
@@ -390,7 +390,7 @@ def saveSwatch_PSPPAL(fileName, colourSwatch):
 
 
 ### CorelDraw PAL ###
-def openSwatch_CDPAL(file):
+def openSwatch_CDPAL(file: str) -> ColourSwatch:
 	""" Open a CorelDraw .PAL into a colour swatch """
 	with open(file) as fileData:
 		if fileData.readlines()[0].strip() == "JASC-PAL":
@@ -402,7 +402,7 @@ def openSwatch_CDPAL(file):
 			colours.append(Colour(parts[0],	colour=CMYKColor(*[float(col)/100 for col in parts[1:5]])))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_CDPAL(fileName, colourSwatch):
+def saveSwatch_CDPAL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as CorelDraw .PAL """
 	for colour in colourSwatch.colours:
 		if colour.nameNull:
@@ -416,7 +416,7 @@ def saveSwatch_CDPAL(fileName, colourSwatch):
 
 
 ### HPL ###
-def openSwatch_HPL(file):
+def openSwatch_HPL(file: str) -> ColourSwatch:
 	""" Open a .HPL into a colour swatch """
 	with open(file) as fileData:
 		colours = []
@@ -424,7 +424,7 @@ def openSwatch_HPL(file):
 			colours.append(getColourFromLine(line, lineno))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_HPL(fileName, colourSwatch):
+def saveSwatch_HPL(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .HPL """
 	with open(fileName, "w") as fileData:
 		fileData.write("Palette\nVersion 4.0\n\n" + "\n".join([" ".join(
@@ -433,7 +433,7 @@ def saveSwatch_HPL(fileName, colourSwatch):
 
 
 ### ASE ###
-def openSwatch_ASE(file):
+def openSwatch_ASE(file: str) -> ColourSwatch:
 	""" Open an .ase into a list of colour swatches """
 	project = swatch.parse(file)
 	swatches = []
@@ -453,13 +453,13 @@ def openSwatch_ASE(file):
 		swatches.append(ColourSwatch(swtch["name"], colours))
 	return swatches
 
-def saveSwatch_ASE(fileName, colourSwatch):
+def saveSwatch_ASE(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .ase """
 	raise NotImplementedError
 
 
 ### IMAGE ###
-def openSwatch_PNG(file):
+def openSwatch_PNG(file: str) -> ColourSwatch:
 	"""Open a .png into a colour swatch """
 	colours = []
 	project = Image.open(file).convert("RGB")
@@ -472,7 +472,7 @@ def openSwatch_PNG(file):
 		nameNull=True))
 	return getSwatchFromFileName(file, colours)
 
-def openSwatch_IMAGE(file):
+def openSwatch_IMAGE(file: str) -> ColourSwatch:
 	""" open .jpg, .webp """
 	# Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)
 	colours = []
@@ -486,7 +486,7 @@ def openSwatch_IMAGE(file):
 			nameNull=True))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_IMAGE(fileName, colourSwatch):
+def saveSwatch_IMAGE(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .png, .jpg, .webp """
 	# Colours should be 16x16 px on a canvas with size 256x(16*ceil(colours/16)
 	colours = colourSwatch.colours
@@ -503,7 +503,7 @@ def saveSwatch_IMAGE(fileName, colourSwatch):
 
 
 ### SVG ###
-def openSwatch_SVG(file):
+def openSwatch_SVG(file: str) -> ColourSwatch:
 	"""Open a .svg into a colour swatch """
 	colours = []
 	rCols = set()
@@ -530,7 +530,7 @@ def openSwatch_SVG(file):
 				sRGBColor(col[0], col[1], col[2]), True))
 	return getSwatchFromFileName(file, colours)
 
-def saveSwatch_SVG(fileName, colourSwatch):
+def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch):
 	""" Save a colour swatch as .svg"""
 	colours = colourSwatch.colours
 	rows = ceil(len(colours)/16)
@@ -538,13 +538,13 @@ def saveSwatch_SVG(fileName, colourSwatch):
 		colours[-1].toRGB()
 		data = [("<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"{0}\" " +
 		"width=\"256\" version=\"1.1\">\n\t<rect style=\"fill:#{1}\" " +
-		"height=\"{0}\" width=\"256\" x=\"0\" y=\"0\"/>").format(rows*16, "".join(colours[-1].convertedColourToHexTuple()))]
+		"height=\"{0}\" width=\"256\" x=\"0\" y=\"0\"/>").format(rows*16, "".join(colours[-1].getRGB255Hex()))]
 		index = 0
 		for row in range(rows):
 			for col in range(16):
 				colours[index].toRGB()
 				data.append("\t<rect style=\"fill:#{}\" height=\"16\" width=\"16\" x=\"{}\" y=\"{}\"/>".format(
-				"".join(colours[index].convertedColourToHexTuple()), col*16, row*16))
+				"".join(colours[index].getRGB255Hex()), col*16, row*16))
 				if index < len(colours) - 2:
 					index += 1
 				else:

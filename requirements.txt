@@ -1,7 +1,6 @@
-colormath==3.*,>=3.0.0
-defusedxml==0.*,>=0.6.0
-gimpformats==2020.*,>=2020.2.4
-pillow==7.*,>=7.1.2
-pyyaml==5.*,>=5.3.1
-swatch==0.*,>=0.4.0
-tomlkit==0.*,>=0.6.0
+Pillow<10,>=8.0.1
+PyYAML<7,>=5.3.1
+colormath<5,>=3.0.0
+defusedxml<2,>=0.6.0
+swatch<2,>=0.4.0
+tomlkit<2,>=0.7.0
