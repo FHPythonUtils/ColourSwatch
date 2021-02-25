@@ -86,7 +86,7 @@ e.g.
 
 
 ## Documentation
-See the [Docs](/DOCS/README.md) for more information.
+See the [Docs](/DOCS/) for more information.
 
 
 
