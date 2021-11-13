@@ -50,7 +50,7 @@ do file io
 
 ## extNotRecognised
 
-[[find in source code]](../../colourswatch/io.py#L34)
+[[find in source code]](../../colourswatch/io.py#L41)
 
 ```python
 def extNotRecognised(fileName: str):
@@ -60,7 +60,7 @@ Output the file extension not recognised error
 
 ## getColourFromLine
 
-[[find in source code]](../../colourswatch/io.py#L84)
+[[find in source code]](../../colourswatch/io.py#L154)
 
 ```python
 def getColourFromLine(
@@ -76,7 +76,7 @@ getColourFromLine
 
 ## getSwatchFromFileName
 
-[[find in source code]](../../colourswatch/io.py#L94)
+[[find in source code]](../../colourswatch/io.py#L170)
 
 ```python
 def getSwatchFromFileName(file: str, colours: list[Colour]):
@@ -86,11 +86,11 @@ getSwatchFromFileName
 
 ## getWriteOutColour
 
-[[find in source code]](../../colourswatch/io.py#L98)
+[[find in source code]](../../colourswatch/io.py#L175)
 
 ```python
 def getWriteOutColour(
-    colour: list[Any],
+    colour: Iterable[Any],
     convertType: type = int,
     multiplier: int = 255,
 ) -> list[Any]:
@@ -100,7 +100,7 @@ getWriteOutColour
 
 ## openColourSwatch
 
-[[find in source code]](../../colourswatch/io.py#L41)
+[[find in source code]](../../colourswatch/io.py#L71)
 
 ```python
 def openColourSwatch(file: str) -> ColourSwatch:
@@ -112,6 +112,11 @@ Open a colour swatch file into a layer image object
 
 - `file` *str* - path/ filename
 
+#### Raises
+
+- `FileExistsError` - [description]
+- `ValueError` - [description]
+
 #### Returns
 
 - `ColourSwatch` - a colour swatch object
@@ -122,7 +127,7 @@ Open a colour swatch file into a layer image object
 
 ## openSwatch_ACBL
 
-[[find in source code]](../../colourswatch/io.py#L325)
+[[find in source code]](../../colourswatch/io.py#L498)
 
 ```python
 def openSwatch_ACBL(file: str) -> ColourSwatch:
@@ -136,7 +141,7 @@ Open a .ACBL into a colour swatch
 
 ## openSwatch_ASE
 
-[[find in source code]](../../colourswatch/io.py#L436)
+[[find in source code]](../../colourswatch/io.py#L651)
 
 ```python
 def openSwatch_ASE(file: str) -> ColourSwatch:
@@ -150,7 +155,7 @@ Open an .ase into a list of colour swatches
 
 ## openSwatch_CDPAL
 
-[[find in source code]](../../colourswatch/io.py#L393)
+[[find in source code]](../../colourswatch/io.py#L590)
 
 ```python
 def openSwatch_CDPAL(file: str) -> ColourSwatch:
@@ -164,7 +169,7 @@ Open a CorelDraw .PAL into a colour swatch
 
 ## openSwatch_COLOR
 
-[[find in source code]](../../colourswatch/io.py#L190)
+[[find in source code]](../../colourswatch/io.py#L310)
 
 ```python
 def openSwatch_COLOR(file: str) -> ColourSwatch:
@@ -178,7 +183,7 @@ Open a .COLOR into a colour swatch
 
 ## openSwatch_GPL
 
-[[find in source code]](../../colourswatch/io.py#L104)
+[[find in source code]](../../colourswatch/io.py#L183)
 
 ```python
 def openSwatch_GPL(file: str):
@@ -188,7 +193,7 @@ Open a .GPL into a colour swatch
 
 ## openSwatch_HPL
 
-[[find in source code]](../../colourswatch/io.py#L419)
+[[find in source code]](../../colourswatch/io.py#L627)
 
 ```python
 def openSwatch_HPL(file: str) -> ColourSwatch:
@@ -202,7 +207,7 @@ Open a .HPL into a colour swatch
 
 ## openSwatch_IMAGE
 
-[[find in source code]](../../colourswatch/io.py#L475)
+[[find in source code]](../../colourswatch/io.py#L699)
 
 ```python
 def openSwatch_IMAGE(file: str) -> ColourSwatch:
@@ -216,7 +221,7 @@ open .jpg, .webp
 
 ## openSwatch_JSON
 
-[[find in source code]](../../colourswatch/io.py#L148)
+[[find in source code]](../../colourswatch/io.py#L246)
 
 ```python
 def openSwatch_JSON(file: str) -> ColourSwatch:
@@ -230,7 +235,7 @@ Open a .JSON into a colour swatch
 
 ## openSwatch_PNG
 
-[[find in source code]](../../colourswatch/io.py#L462)
+[[find in source code]](../../colourswatch/io.py#L681)
 
 ```python
 def openSwatch_PNG(file: str) -> ColourSwatch:
@@ -244,7 +249,7 @@ Open a .png into a colour swatch
 
 ## openSwatch_PSPPAL
 
-[[find in source code]](../../colourswatch/io.py#L376)
+[[find in source code]](../../colourswatch/io.py#L567)
 
 ```python
 def openSwatch_PSPPAL(file: str) -> ColourSwatch:
@@ -258,7 +263,7 @@ Open a PaintShopPro .PAL into a colour swatch
 
 ## openSwatch_SKP
 
-[[find in source code]](../../colourswatch/io.py#L224)
+[[find in source code]](../../colourswatch/io.py#L364)
 
 ```python
 def openSwatch_SKP(file: str) -> ColourSwatch:
@@ -272,7 +277,7 @@ Open a .SKP into a colour swatch
 
 ## openSwatch_SOC
 
-[[find in source code]](../../colourswatch/io.py#L255)
+[[find in source code]](../../colourswatch/io.py#L401)
 
 ```python
 def openSwatch_SOC(file: str) -> ColourSwatch:
@@ -286,7 +291,7 @@ Open a .SOC into a colour swatch
 
 ## openSwatch_SPL
 
-[[find in source code]](../../colourswatch/io.py#L207)
+[[find in source code]](../../colourswatch/io.py#L334)
 
 ```python
 def openSwatch_SPL(file: str) -> ColourSwatch:
@@ -300,7 +305,7 @@ Open a .SPL into a colour swatch
 
 ## openSwatch_SVG
 
-[[find in source code]](../../colourswatch/io.py#L506)
+[[find in source code]](../../colourswatch/io.py#L738)
 
 ```python
 def openSwatch_SVG(file: str) -> ColourSwatch:
@@ -314,7 +319,7 @@ Open a .svg into a colour swatch
 
 ## openSwatch_TOML
 
-[[find in source code]](../../colourswatch/io.py#L169)
+[[find in source code]](../../colourswatch/io.py#L278)
 
 ```python
 def openSwatch_TOML(file: str) -> ColourSwatch:
@@ -328,7 +333,7 @@ Open a .TOML into a colour swatch
 
 ## openSwatch_TXT
 
-[[find in source code]](../../colourswatch/io.py#L298)
+[[find in source code]](../../colourswatch/io.py#L457)
 
 ```python
 def openSwatch_TXT(file: str) -> ColourSwatch:
@@ -342,7 +347,7 @@ Open a .TXT into a colour swatch
 
 ## openSwatch_XML
 
-[[find in source code]](../../colourswatch/io.py#L349)
+[[find in source code]](../../colourswatch/io.py#L522)
 
 ```python
 def openSwatch_XML(file: str) -> ColourSwatch:
@@ -356,7 +361,7 @@ Open a .XML into a colour swatch
 
 ## openSwatch_YAML
 
-[[find in source code]](../../colourswatch/io.py#L127)
+[[find in source code]](../../colourswatch/io.py#L214)
 
 ```python
 def openSwatch_YAML(file: str) -> ColourSwatch:
@@ -370,7 +375,7 @@ Open a .YAML into a colour swatch
 
 ## prettify
 
-[[find in source code]](../../colourswatch/io.py#L26)
+[[find in source code]](../../colourswatch/io.py#L30)
 
 ```python
 def prettify(
@@ -384,10 +389,10 @@ Return a pretty-printed XML string for the Element.
 
 ## saveColourSwatch
 
-[[find in source code]](../../colourswatch/io.py#L64)
+[[find in source code]](../../colourswatch/io.py#L114)
 
 ```python
-def saveColourSwatch(fileName: str, colourSwatch: ColourSwatch):
+def saveColourSwatch(fileName: str, colourSwatch: ColourSwatch) -> None:
 ```
 
 Save a colour swatch to a file
@@ -397,13 +402,21 @@ Save a colour swatch to a file
 - `fileName` *str* - path/ filename
 - `colourSwatch` *ColourSwatch* - the colour swatch to save
 
+#### Raises
+
+- `ValueError` - [description]
+
+#### Returns
+
+- `None` - [description]
+
 #### See also
 
 - [ColourSwatch](colourswatch.md#colourswatch)
 
 ## saveSwatch_ACBL
 
-[[find in source code]](../../colourswatch/io.py#L343)
+[[find in source code]](../../colourswatch/io.py#L516)
 
 ```python
 def saveSwatch_ACBL(fileName: str, colourSwatch: ColourSwatch):
@@ -417,7 +430,7 @@ Save a colour swatch as .ACBL
 
 ## saveSwatch_ASE
 
-[[find in source code]](../../colourswatch/io.py#L456)
+[[find in source code]](../../colourswatch/io.py#L675)
 
 ```python
 def saveSwatch_ASE(fileName: str, colourSwatch: ColourSwatch):
@@ -431,7 +444,7 @@ Save a colour swatch as .ase
 
 ## saveSwatch_CDPAL
 
-[[find in source code]](../../colourswatch/io.py#L405)
+[[find in source code]](../../colourswatch/io.py#L603)
 
 ```python
 def saveSwatch_CDPAL(fileName: str, colourSwatch: ColourSwatch):
@@ -445,7 +458,7 @@ Save a colour swatch as CorelDraw .PAL
 
 ## saveSwatch_COLOR
 
-[[find in source code]](../../colourswatch/io.py#L199)
+[[find in source code]](../../colourswatch/io.py#L318)
 
 ```python
 def saveSwatch_COLOR(fileName: str, colourSwatch: ColourSwatch):
@@ -459,7 +472,7 @@ Save a colour swatch as .COLOR
 
 ## saveSwatch_GPL
 
-[[find in source code]](../../colourswatch/io.py#L115)
+[[find in source code]](../../colourswatch/io.py#L200)
 
 ```python
 def saveSwatch_GPL(fileName: str, colourSwatch: ColourSwatch):
@@ -473,7 +486,7 @@ Save a colour swatch as .GPL
 
 ## saveSwatch_HPL
 
-[[find in source code]](../../colourswatch/io.py#L427)
+[[find in source code]](../../colourswatch/io.py#L635)
 
 ```python
 def saveSwatch_HPL(fileName: str, colourSwatch: ColourSwatch):
@@ -487,7 +500,7 @@ Save a colour swatch as .HPL
 
 ## saveSwatch_IMAGE
 
-[[find in source code]](../../colourswatch/io.py#L489)
+[[find in source code]](../../colourswatch/io.py#L718)
 
 ```python
 def saveSwatch_IMAGE(fileName: str, colourSwatch: ColourSwatch):
@@ -501,7 +514,7 @@ Save a colour swatch as .png, .jpg, .webp
 
 ## saveSwatch_JSON
 
-[[find in source code]](../../colourswatch/io.py#L159)
+[[find in source code]](../../colourswatch/io.py#L269)
 
 ```python
 def saveSwatch_JSON(fileName: str, colourSwatch: ColourSwatch):
@@ -515,7 +528,7 @@ Save a colour swatch as .JSON
 
 ## saveSwatch_PSPPAL
 
-[[find in source code]](../../colourswatch/io.py#L384)
+[[find in source code]](../../colourswatch/io.py#L575)
 
 ```python
 def saveSwatch_PSPPAL(fileName: str, colourSwatch: ColourSwatch):
@@ -529,7 +542,7 @@ Save a colour swatch as PaintShopPro .PAL
 
 ## saveSwatch_SKP
 
-[[find in source code]](../../colourswatch/io.py#L242)
+[[find in source code]](../../colourswatch/io.py#L386)
 
 ```python
 def saveSwatch_SKP(fileName: str, colourSwatch: ColourSwatch):
@@ -543,7 +556,7 @@ Save a colour swatch as .SKP
 
 ## saveSwatch_SOC
 
-[[find in source code]](../../colourswatch/io.py#L268)
+[[find in source code]](../../colourswatch/io.py#L413)
 
 ```python
 def saveSwatch_SOC(fileName: str, colourSwatch: ColourSwatch):
@@ -557,7 +570,7 @@ Save a colour swatch as .SOC
 
 ## saveSwatch_SPL
 
-[[find in source code]](../../colourswatch/io.py#L215)
+[[find in source code]](../../colourswatch/io.py#L342)
 
 ```python
 def saveSwatch_SPL(fileName: str, colourSwatch: ColourSwatch):
@@ -571,7 +584,7 @@ Save a colour swatch as .SPL
 
 ## saveSwatch_SVG
 
-[[find in source code]](../../colourswatch/io.py#L533)
+[[find in source code]](../../colourswatch/io.py#L772)
 
 ```python
 def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch):
@@ -585,7 +598,7 @@ Save a colour swatch as .svg
 
 ## saveSwatch_TOML
 
-[[find in source code]](../../colourswatch/io.py#L180)
+[[find in source code]](../../colourswatch/io.py#L301)
 
 ```python
 def saveSwatch_TOML(fileName: str, colourSwatch: ColourSwatch):
@@ -599,7 +612,7 @@ Save a colour swatch as .TOML
 
 ## saveSwatch_TXT
 
-[[find in source code]](../../colourswatch/io.py#L309)
+[[find in source code]](../../colourswatch/io.py#L475)
 
 ```python
 def saveSwatch_TXT(fileName: str, colourSwatch: ColourSwatch):
@@ -613,7 +626,7 @@ Save a colour swatch as .TXT
 
 ## saveSwatch_XML
 
-[[find in source code]](../../colourswatch/io.py#L364)
+[[find in source code]](../../colourswatch/io.py#L543)
 
 ```python
 def saveSwatch_XML(fileName: str, colourSwatch: ColourSwatch):
@@ -627,7 +640,7 @@ Save a colour swatch as .XML
 
 ## saveSwatch_YAML
 
-[[find in source code]](../../colourswatch/io.py#L138)
+[[find in source code]](../../colourswatch/io.py#L237)
 
 ```python
 def saveSwatch_YAML(fileName: str, colourSwatch: ColourSwatch):
