@@ -1,5 +1,7 @@
 """Test module """
 
+from __future__ import annotations
+
 import sys
 from json import loads
 from pathlib import Path
