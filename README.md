@@ -58,7 +58,7 @@ the case, please open an issue and I will fix the tables.
 |sK1|.skp|:heavy_check_mark:|:heavy_check_mark:|
 |LibreOffice|.soc|:heavy_check_mark:|:heavy_check_mark:|
 |Paint.net|.txt|:heavy_check_mark:|:heavy_check_mark:|
-|Adobe Color Book Legacy|.acbl|:heavy_check_mark:|:x:|
+|Adobe Color Book Legacy|.acbl|:heavy_check_mark:|❌|
 |Scribus|.xml|:heavy_check_mark:|:heavy_check_mark:|
 |PaintShopPro|.pal|:heavy_check_mark:|:heavy_check_mark:|
 |CorelDraw|.pal|:heavy_check_mark:|:heavy_check_mark:|
@@ -70,7 +70,7 @@ the case, please open an issue and I will fix the tables.
 |&|.svg|:heavy_check_mark:|:heavy_check_mark:|
 |$|.jpg|:heavy_check_mark:|:heavy_check_mark:|
 |$|.webp|:heavy_check_mark:|:heavy_check_mark:|
-|Adobe Swatch Exchange|.ase|:heavy_check_mark:|:x:|
+|Adobe Swatch Exchange|.ase|:heavy_check_mark:|❌|
 
 ### *
 
