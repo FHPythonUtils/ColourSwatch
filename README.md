@@ -52,25 +52,25 @@ the case, please open an issue and I will fix the tables.
 
 |Application|Extension|Read|Write|
 |---|---|---|---|
-|Gimp|.gpl|:heavy_check_mark:|:heavy_check_mark:|
-|KOffice|.colors|:heavy_check_mark:|:heavy_check_mark:|
-|Skencil|.spl|:heavy_check_mark:|:heavy_check_mark:|
-|sK1|.skp|:heavy_check_mark:|:heavy_check_mark:|
-|LibreOffice|.soc|:heavy_check_mark:|:heavy_check_mark:|
-|Paint.net|.txt|:heavy_check_mark:|:heavy_check_mark:|
-|Adobe Color Book Legacy|.acbl|:heavy_check_mark:|❌|
-|Scribus|.xml|:heavy_check_mark:|:heavy_check_mark:|
-|PaintShopPro|.pal|:heavy_check_mark:|:heavy_check_mark:|
-|CorelDraw|.pal|:heavy_check_mark:|:heavy_check_mark:|
-|ColdFusion|.hpl|:heavy_check_mark:|:heavy_check_mark:|
-|*|.yaml|:heavy_check_mark:|:heavy_check_mark:|
-|*|.toml|:heavy_check_mark:|:heavy_check_mark:|
-|*|.json|:heavy_check_mark:|:heavy_check_mark:|
-|&|.png|:heavy_check_mark:|:heavy_check_mark:|
-|&|.svg|:heavy_check_mark:|:heavy_check_mark:|
-|$|.jpg|:heavy_check_mark:|:heavy_check_mark:|
-|$|.webp|:heavy_check_mark:|:heavy_check_mark:|
-|Adobe Swatch Exchange|.ase|:heavy_check_mark:|❌|
+|Gimp|.gpl|✔                |✔                |
+|KOffice|.colors|✔                |✔                |
+|Skencil|.spl|✔                |✔                |
+|sK1|.skp|✔                |✔                |
+|LibreOffice|.soc|✔                |✔                |
+|Paint.net|.txt|✔                |✔                |
+|Adobe Color Book Legacy|.acbl|✔                |❌|
+|Scribus|.xml|✔                |✔                |
+|PaintShopPro|.pal|✔                |✔                |
+|CorelDraw|.pal|✔                |✔                |
+|ColdFusion|.hpl|✔                |✔                |
+|*|.yaml|✔                |✔                |
+|*|.toml|✔                |✔                |
+|*|.json|✔                |✔                |
+|&|.png|✔                |✔                |
+|&|.svg|✔                |✔                |
+|$|.jpg|✔                |✔                |
+|$|.webp|✔                |✔                |
+|Adobe Swatch Exchange|.ase|✔                |❌|
 
 ### *
 
