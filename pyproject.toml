@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "colourswatch"
-version = "2021"
+version = "2022"
 license = "mit"
 description = "Use this module to read, and write to a number of colour palette file formats"
 authors = ["FredHappyface"]
@@ -21,13 +21,17 @@ documentation = "https://github.com/FHPythonUtils/ColourSwatch/blob/master/READM
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8,<4.0"
 colormath = "<4,>=3.0.0"
 PyYAML = "<7,>=6.0"
 defusedxml = "<2,>=0.7.1"
-Pillow = "<9,>=8.4.0"
-tomlkit = "<2,>=0.7.2"
+Pillow = "<10,>=9.0.0"
+tomlkit = "<2,>=0.8.0"
 swatch = "<2,>=0.4.0"
+metprint = "<2023,>=2021"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
 
 [tool.pylint.basic]
 argument-naming-style = "camelCase"
