@@ -1,10 +1,10 @@
-# GimpGplPalette
+# Gimpgplpalette
 
-> Auto-generated documentation for [colourswatch.GimpGplPalette](../../colourswatch/GimpGplPalette.py) module.
+> Auto-generated documentation for [colourswatch.GimpGplPalette](../../../colourswatch/GimpGplPalette.py) module.
 
 Pure python implementation of the gimp gpl palette format.
 
-- [Colourswatch](../README.md#colourswatch-index) / [Modules](../README.md#colourswatch-modules) / [colourswatch](index.md#colourswatch) / GimpGplPalette
+- [Colourswatch](../README.md#colourswatch-index) / [Modules](../MODULES.md#colourswatch-modules) / [Colourswatch](index.md#colourswatch) / Gimpgplpalette
     - [GimpGplPalette](#gimpgplpalette)
         - [GimpGplPalette().\_\_eq\_\_](#gimpgplpalette__eq__)
         - [GimpGplPalette().\_\_repr\_\_](#gimpgplpalette__repr__)
@@ -15,7 +15,7 @@ Pure python implementation of the gimp gpl palette format.
 
 ## GimpGplPalette
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L8)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L8)
 
 ```python
 class GimpGplPalette():
@@ -26,7 +26,7 @@ Pure python implementation of the gimp gpl palette format.
 
 ### GimpGplPalette().\_\_eq\_\_
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L106)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L106)
 
 ```python
 def __eq__(other: GimpGplPalette):
@@ -36,7 +36,7 @@ Perform a comparison.
 
 ### GimpGplPalette().\_\_repr\_\_
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L91)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L91)
 
 ```python
 def __repr__():
@@ -46,7 +46,7 @@ Get a textual representation of this object.
 
 ### GimpGplPalette().decode
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L39)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L39)
 
 ```python
 def decode(data: str) -> None:
@@ -64,7 +64,7 @@ Decode a byte buffer.
 
 ### GimpGplPalette().encode
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L65)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L65)
 
 ```python
 def encode():
@@ -74,7 +74,7 @@ Encode to a raw data stream.
 
 ### GimpGplPalette().load
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L24)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L24)
 
 ```python
 def load(fileName: BytesIO | str):
@@ -88,7 +88,7 @@ Load a gimp file.
 
 ### GimpGplPalette().save
 
-[[find in source code]](../../colourswatch/GimpGplPalette.py#L82)
+[[find in source code]](../../../colourswatch/GimpGplPalette.py#L82)
 
 ```python
 def save(fileName: str | BytesIO):
