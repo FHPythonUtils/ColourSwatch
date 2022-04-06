@@ -20,7 +20,6 @@ import yaml
 from colormath.color_objects import CMYKColor, ColorBase, LabColor, sRGBColor
 from defusedxml.ElementTree import parse
 from defusedxml.minidom import parseString
-from metprint import FHFormatter, Logger, LogType
 from PIL import Image, ImageDraw
 
 from colourswatch.colourswatch import Colour, ColourSwatch
@@ -62,10 +61,7 @@ def extNotRecognised(fileName: str):
 			"svg",
 		]
 	)
-	Logger(FHFormatter()).logPrint(
-		f'File extension is not recognised for file: {fileName}! Must be one of "{exts}"',
-		LogType.ERROR,
-	)
+	print(f'ERROR: File extension is not recognised for file: {fileName}! Must be one of "{exts}"')
 
 
 def openColourSwatch(file: str) -> ColourSwatch:
@@ -102,7 +98,7 @@ def openColourSwatch(file: str) -> ColourSwatch:
 		"svg": openSwatch_SVG,
 	}
 	if not exists(file):
-		Logger(FHFormatter()).logPrint(f"{file} does not exist", LogType.ERROR)
+		print(f"ERROR: {file} does not exist")
 		raise FileExistsError
 	fileExt = file.split(".")[-1].lower()
 	if fileExt not in functionMap:
@@ -582,7 +578,8 @@ def saveSwatch_PSPPAL(fileName: str, colourSwatch: ColourSwatch):
 				for colour in colourSwatch.colours
 			]
 		)
-		+ "\n"
+		+ "\n",
+		encoding="utf-8",
 	)
 
 
@@ -618,7 +615,8 @@ def saveSwatch_CDPAL(fileName: str, colourSwatch: ColourSwatch):
 				for colour in colourSwatch.colours
 			]
 		)
-		+ "\n"
+		+ "\n",
+		encoding="utf-8",
 	)
 	return True
 
@@ -795,4 +793,4 @@ def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch):
 			else:
 				break
 	data.append("</svg>\n")
-	Path(fileName).write_text("\n".join(data))
+	Path(fileName).write_text("\n".join(data), encoding="utf-8")

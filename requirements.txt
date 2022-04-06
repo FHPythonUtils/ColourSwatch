@@ -1,7 +1,6 @@
-Pillow<10,>=9.0.0
+Pillow<10,>=9.1.0
 PyYAML<7,>=6.0
 colormath<4,>=3.0.0
 defusedxml<2,>=0.7.1
-metprint<2023,>=2021
 swatch<2,>=0.4.0
-tomlkit<2,>=0.8.0
+tomlkit<2,>=0.10.1
