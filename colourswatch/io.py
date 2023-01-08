@@ -784,9 +784,7 @@ def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch):
 		for col in range(16):
 			colours[index].toRGB()
 			data.append(
-				'\t<rect style="fill:#{}" height="16" width="16" x="{}" y="{}"/>'.format(
-					"".join(colours[index].getRGB255Hex()), col * 16, row * 16
-				)
+				f'\t<rect style="fill:#{"".join(colours[index].getRGB255Hex())}" height="16" width="16" x="{col * 16}" y="{row * 16}"/>'
 			)
 			if index < len(colours) - 2:
 				index += 1
