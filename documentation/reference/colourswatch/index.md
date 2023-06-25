@@ -1,11 +1,15 @@
 # Colourswatch
 
+[Colourswatch Index](../README.md#colourswatch-index) /
+Colourswatch
+
 > Auto-generated documentation for [colourswatch](../../../colourswatch/__init__.py) module.
 
-Use this module to read, and write to a number of colour palette file formats
+- [Colourswatch](#colourswatch)
+  - [Modules](#modules)
 
-- [Colourswatch](../README.md#colourswatch-index) / [Modules](../MODULES.md#colourswatch-modules) / Colourswatch
-    - Modules
-        - [ColourSwatch](colourswatch.md#colourswatch)
-        - [Gimpgplpalette](GimpGplPalette.md#gimpgplpalette)
-        - [Io](io.md#io)
+## Modules
+
+- [ColourSwatch](./colourswatch.md)
+- [Gimpgplpalette](./GimpGplPalette.md)
+- [Io](./io.md)

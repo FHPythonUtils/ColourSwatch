@@ -1,56 +1,63 @@
 # Gimpgplpalette
 
+[Colourswatch Index](../README.md#colourswatch-index) /
+[Colourswatch](./index.md#colourswatch) /
+Gimpgplpalette
+
 > Auto-generated documentation for [colourswatch.GimpGplPalette](../../../colourswatch/GimpGplPalette.py) module.
 
-Pure python implementation of the gimp gpl palette format.
-
-- [Colourswatch](../README.md#colourswatch-index) / [Modules](../MODULES.md#colourswatch-modules) / [Colourswatch](index.md#colourswatch) / Gimpgplpalette
-    - [GimpGplPalette](#gimpgplpalette)
-        - [GimpGplPalette().\_\_eq\_\_](#gimpgplpalette__eq__)
-        - [GimpGplPalette().\_\_repr\_\_](#gimpgplpalette__repr__)
-        - [GimpGplPalette().decode](#gimpgplpalettedecode)
-        - [GimpGplPalette().encode](#gimpgplpaletteencode)
-        - [GimpGplPalette().load](#gimpgplpaletteload)
-        - [GimpGplPalette().save](#gimpgplpalettesave)
+- [Gimpgplpalette](#gimpgplpalette)
+  - [GimpGplPalette](#gimpgplpalette)
+    - [GimpGplPalette().__eq__](#gimpgplpalette()__eq__)
+    - [GimpGplPalette().__repr__](#gimpgplpalette()__repr__)
+    - [GimpGplPalette().decode](#gimpgplpalette()decode)
+    - [GimpGplPalette().encode](#gimpgplpalette()encode)
+    - [GimpGplPalette().load](#gimpgplpalette()load)
+    - [GimpGplPalette().save](#gimpgplpalette()save)
 
 ## GimpGplPalette
 
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L8)
-
-```python
-class GimpGplPalette():
-    def __init__(fileName: BytesIO | str | None = None):
-```
+[Show source in GimpGplPalette.py:8](../../../colourswatch/GimpGplPalette.py#L8)
 
 Pure python implementation of the gimp gpl palette format.
 
-### GimpGplPalette().\_\_eq\_\_
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L106)
+#### Signature
 
 ```python
-def __eq__(other: GimpGplPalette):
+class GimpGplPalette:
+    def __init__(self, fileName: BytesIO | str | None = None):
+        ...
 ```
+
+### GimpGplPalette().__eq__
+
+[Show source in GimpGplPalette.py:106](../../../colourswatch/GimpGplPalette.py#L106)
 
 Perform a comparison.
 
-### GimpGplPalette().\_\_repr\_\_
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L91)
+#### Signature
 
 ```python
-def __repr__():
+def __eq__(self, other: GimpGplPalette):
+    ...
 ```
+
+### GimpGplPalette().__repr__
+
+[Show source in GimpGplPalette.py:91](../../../colourswatch/GimpGplPalette.py#L91)
 
 Get a textual representation of this object.
 
-### GimpGplPalette().decode
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L39)
+#### Signature
 
 ```python
-def decode(data: str) -> None:
+def __repr__(self):
+    ...
 ```
+
+### GimpGplPalette().decode
+
+[Show source in GimpGplPalette.py:39](../../../colourswatch/GimpGplPalette.py#L39)
 
 Decode a byte buffer.
 
@@ -62,23 +69,29 @@ Decode a byte buffer.
 
 - `Exception` - File format error.  Magic value mismatch.
 
-### GimpGplPalette().encode
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L65)
+#### Signature
 
 ```python
-def encode():
+def decode(self, data: str) -> None:
+    ...
 ```
+
+### GimpGplPalette().encode
+
+[Show source in GimpGplPalette.py:65](../../../colourswatch/GimpGplPalette.py#L65)
 
 Encode to a raw data stream.
 
-### GimpGplPalette().load
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L24)
+#### Signature
 
 ```python
-def load(fileName: BytesIO | str):
+def encode(self):
+    ...
 ```
+
+### GimpGplPalette().load
+
+[Show source in GimpGplPalette.py:24](../../../colourswatch/GimpGplPalette.py#L24)
 
 Load a gimp file.
 
@@ -86,12 +99,24 @@ Load a gimp file.
 
 - `fileName` - can be a file name or a file-like object
 
-### GimpGplPalette().save
-
-[[find in source code]](../../../colourswatch/GimpGplPalette.py#L82)
+#### Signature
 
 ```python
-def save(fileName: str | BytesIO):
+def load(self, fileName: BytesIO | str):
+    ...
 ```
 
+### GimpGplPalette().save
+
+[Show source in GimpGplPalette.py:82](../../../colourswatch/GimpGplPalette.py#L82)
+
 Save this gimp image to a file.
+
+#### Signature
+
+```python
+def save(self, fileName: str | BytesIO):
+    ...
+```
+
+
