@@ -863,5 +863,3 @@ def saveSwatch_YAML(fileName: str, colourSwatch: ColourSwatch):
 #### See also
 
 - [ColourSwatch](./colourswatch.md#colourswatch)
-
-

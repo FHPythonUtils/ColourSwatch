@@ -118,5 +118,3 @@ Save this gimp image to a file.
 def save(self, fileName: str | BytesIO):
     ...
 ```
-
-

@@ -280,5 +280,3 @@ image.putpalette(colourSwatch.toPILPalette())
 def toPILPalette(self) -> list[int]:
     ...
 ```
-
-

@@ -1,6 +1,6 @@
-Pillow<10,>=9.1.0
-PyYAML<7,>=6.0
+Pillow<11,>=10.0.0
+PyYAML<7,>=6.0.1
 colormath<4,>=3.0.0
 defusedxml<2,>=0.7.1
 swatch<2,>=0.4.0
-tomlkit<2,>=0.10.1
+tomlkit<2,>=0.12.1

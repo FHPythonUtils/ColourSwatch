@@ -28,10 +28,8 @@ def test_yaml():
 	yaml = colourswatch.io.openColourSwatch(f"{THISDIR}/data/base24.yaml")
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(yaml).gpl", yaml)
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(yaml).yaml", yaml)
-	with Path(f"{THISDIR}/data/base24.yaml") as yaml:
-		source = safe_load(yaml.read_text(encoding="utf-8"))
-	with Path(f"{THISDIR}/data/base24(yaml).yaml") as yaml:
-		dest = safe_load(yaml.read_text(encoding="utf-8"))
+	source = safe_load(Path(f"{THISDIR}/data/base24.yaml").read_text(encoding="utf-8"))
+	dest = safe_load(Path(f"{THISDIR}/data/base24(yaml).yaml").read_text(encoding="utf-8"))
 	assert source == dest
 
 
@@ -144,10 +142,8 @@ def test_toml():
 	toml = colourswatch.io.openColourSwatch(f"{THISDIR}/data/base24.toml")
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(toml).gpl", toml)
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(toml).toml", toml)
-	with Path(f"{THISDIR}/data/base24.toml") as toml:
-		source = tloads(toml.read_text(encoding="utf-8"))
-	with Path(f"{THISDIR}/data/base24(toml).toml") as toml:
-		dest = tloads(toml.read_text(encoding="utf-8"))
+	source = tloads(Path(f"{THISDIR}/data/base24.toml").read_text(encoding="utf-8"))
+	dest = tloads(Path(f"{THISDIR}/data/base24(toml).toml").read_text(encoding="utf-8"))
 	assert source == dest
 
 
@@ -156,10 +152,8 @@ def test_json():
 	json = colourswatch.io.openColourSwatch(f"{THISDIR}/data/base24.json")
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(json).gpl", json)
 	colourswatch.io.saveColourSwatch(f"{THISDIR}/data/base24(json).json", json)
-	with Path(f"{THISDIR}/data/base24.json") as json:
-		source = loads(json.read_text(encoding="utf-8"))
-	with Path(f"{THISDIR}/data/base24(json).json") as json:
-		dest = loads(json.read_text(encoding="utf-8"))
+	source = loads(Path(f"{THISDIR}/data/base24.json").read_text(encoding="utf-8"))
+	dest = loads(Path(f"{THISDIR}/data/base24(json).json").read_text(encoding="utf-8"))
 	assert source == dest
 
 
