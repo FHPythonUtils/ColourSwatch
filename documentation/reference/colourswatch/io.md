@@ -59,8 +59,7 @@ Output the file extension not recognised error
 #### Signature
 
 ```python
-def extNotRecognised(fileName: str):
-    ...
+def extNotRecognised(fileName: str): ...
 ```
 
 
@@ -80,8 +79,7 @@ def getColourFromLine(
     colourSpaceSize: int = 3,
     colourSpace: ColorBase = sRGBColor,
     divider: int = 255,
-):
-    ...
+): ...
 ```
 
 
@@ -95,8 +93,7 @@ getSwatchFromFileName
 #### Signature
 
 ```python
-def getSwatchFromFileName(file: str, colours: list[Colour]):
-    ...
+def getSwatchFromFileName(file: str, colours: list[Colour]): ...
 ```
 
 #### See also
@@ -116,8 +113,7 @@ getWriteOutColour
 ```python
 def getWriteOutColour(
     colour: Iterable[Any], convertType: type = int, multiplier: int = 255
-) -> list[Any]:
-    ...
+) -> list[Any]: ...
 ```
 
 
@@ -144,8 +140,7 @@ Open a colour swatch file into a layer image object
 #### Signature
 
 ```python
-def openColourSwatch(file: str) -> ColourSwatch:
-    ...
+def openColourSwatch(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -163,8 +158,7 @@ Open a .ACBL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_ACBL(file: str) -> ColourSwatch:
-    ...
+def openSwatch_ACBL(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -182,8 +176,7 @@ Open an .ase into a list of colour swatches
 #### Signature
 
 ```python
-def openSwatch_ASE(file: str) -> ColourSwatch:
-    ...
+def openSwatch_ASE(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -201,8 +194,7 @@ Open a CorelDraw .PAL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_CDPAL(file: str) -> ColourSwatch:
-    ...
+def openSwatch_CDPAL(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -220,8 +212,7 @@ Open a .COLOR into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_COLOR(file: str) -> ColourSwatch:
-    ...
+def openSwatch_COLOR(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -239,8 +230,7 @@ Open a .GPL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_GPL(file: str):
-    ...
+def openSwatch_GPL(file: str): ...
 ```
 
 
@@ -254,8 +244,7 @@ Open a .HPL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_HPL(file: str) -> ColourSwatch:
-    ...
+def openSwatch_HPL(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -273,8 +262,7 @@ open .jpg, .webp
 #### Signature
 
 ```python
-def openSwatch_IMAGE(file: str) -> ColourSwatch:
-    ...
+def openSwatch_IMAGE(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -292,8 +280,7 @@ Open a .JSON into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_JSON(file: str) -> ColourSwatch:
-    ...
+def openSwatch_JSON(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -311,8 +298,7 @@ Open a .png into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_PNG(file: str) -> ColourSwatch:
-    ...
+def openSwatch_PNG(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -330,8 +316,7 @@ Open a PaintShopPro .PAL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_PSPPAL(file: str) -> ColourSwatch:
-    ...
+def openSwatch_PSPPAL(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -349,8 +334,7 @@ Open a .SKP into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_SKP(file: str) -> ColourSwatch:
-    ...
+def openSwatch_SKP(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -368,8 +352,7 @@ Open a .SOC into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_SOC(file: str) -> ColourSwatch:
-    ...
+def openSwatch_SOC(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -387,8 +370,7 @@ Open a .SPL into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_SPL(file: str) -> ColourSwatch:
-    ...
+def openSwatch_SPL(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -406,8 +388,7 @@ Open a .svg into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_SVG(file: str) -> ColourSwatch:
-    ...
+def openSwatch_SVG(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -425,8 +406,7 @@ Open a .TOML into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_TOML(file: str) -> ColourSwatch:
-    ...
+def openSwatch_TOML(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -444,8 +424,7 @@ Open a .TXT into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_TXT(file: str) -> ColourSwatch:
-    ...
+def openSwatch_TXT(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -463,8 +442,7 @@ Open a .XML into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_XML(file: str) -> ColourSwatch:
-    ...
+def openSwatch_XML(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -482,8 +460,7 @@ Open a .YAML into a colour swatch
 #### Signature
 
 ```python
-def openSwatch_YAML(file: str) -> ColourSwatch:
-    ...
+def openSwatch_YAML(file: str) -> ColourSwatch: ...
 ```
 
 #### See also
@@ -505,8 +482,7 @@ def prettify(
     elem: Element,
     indent: str = "\t",
     doctype: str = '<?xml version="1.0" encoding="utf-8"?>',
-):
-    ...
+): ...
 ```
 
 
@@ -533,8 +509,7 @@ Save a colour swatch to a file
 #### Signature
 
 ```python
-def saveColourSwatch(fileName: str, colourSwatch: ColourSwatch) -> None:
-    ...
+def saveColourSwatch(fileName: str, colourSwatch: ColourSwatch) -> None: ...
 ```
 
 #### See also
@@ -552,8 +527,7 @@ Save a colour swatch as .ACBL
 #### Signature
 
 ```python
-def saveSwatch_ACBL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_ACBL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -571,8 +545,7 @@ Save a colour swatch as .ase
 #### Signature
 
 ```python
-def saveSwatch_ASE(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_ASE(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -590,8 +563,7 @@ Save a colour swatch as CorelDraw .PAL
 #### Signature
 
 ```python
-def saveSwatch_CDPAL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_CDPAL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -609,8 +581,7 @@ Save a colour swatch as .COLOR
 #### Signature
 
 ```python
-def saveSwatch_COLOR(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_COLOR(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -628,8 +599,7 @@ Save a colour swatch as .GPL
 #### Signature
 
 ```python
-def saveSwatch_GPL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_GPL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -647,8 +617,7 @@ Save a colour swatch as .HPL
 #### Signature
 
 ```python
-def saveSwatch_HPL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_HPL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -666,8 +635,7 @@ Save a colour swatch as .png, .jpg, .webp
 #### Signature
 
 ```python
-def saveSwatch_IMAGE(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_IMAGE(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -685,8 +653,7 @@ Save a colour swatch as .JSON
 #### Signature
 
 ```python
-def saveSwatch_JSON(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_JSON(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -704,8 +671,7 @@ Save a colour swatch as PaintShopPro .PAL
 #### Signature
 
 ```python
-def saveSwatch_PSPPAL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_PSPPAL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -723,8 +689,7 @@ Save a colour swatch as .SKP
 #### Signature
 
 ```python
-def saveSwatch_SKP(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_SKP(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -742,8 +707,7 @@ Save a colour swatch as .SOC
 #### Signature
 
 ```python
-def saveSwatch_SOC(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_SOC(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -761,8 +725,7 @@ Save a colour swatch as .SPL
 #### Signature
 
 ```python
-def saveSwatch_SPL(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_SPL(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -780,8 +743,7 @@ Save a colour swatch as .svg
 #### Signature
 
 ```python
-def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_SVG(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -799,8 +761,7 @@ Save a colour swatch as .TOML
 #### Signature
 
 ```python
-def saveSwatch_TOML(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_TOML(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -818,8 +779,7 @@ Save a colour swatch as .TXT
 #### Signature
 
 ```python
-def saveSwatch_TXT(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_TXT(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -837,8 +797,7 @@ Save a colour swatch as .XML
 #### Signature
 
 ```python
-def saveSwatch_XML(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_XML(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also
@@ -856,8 +815,7 @@ Save a colour swatch as .YAML
 #### Signature
 
 ```python
-def saveSwatch_YAML(fileName: str, colourSwatch: ColourSwatch):
-    ...
+def saveSwatch_YAML(fileName: str, colourSwatch: ColourSwatch): ...
 ```
 
 #### See also

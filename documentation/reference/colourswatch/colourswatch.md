@@ -41,8 +41,7 @@ class Colour:
         colour: ColorBase | None = None,
         nameNull: bool = False,
         alpha: float = 1.0,
-    ):
-        ...
+    ): ...
 ```
 
 ### Colour().__eq__
@@ -54,8 +53,7 @@ equals
 #### Signature
 
 ```python
-def __eq__(self, other: Colour) -> bool:
-    ...
+def __eq__(self, other: Colour) -> bool: ...
 ```
 
 ### Colour().__repr__
@@ -67,8 +65,7 @@ get a string representation of the object
 #### Signature
 
 ```python
-def __repr__(self):
-    ...
+def __repr__(self): ...
 ```
 
 ### Colour().colorToTuple
@@ -80,8 +77,7 @@ get the colour as a tuple. eg. sRGBColor -> (r, g, b)
 #### Signature
 
 ```python
-def colorToTuple(self) -> tuple[float, ...]:
-    ...
+def colorToTuple(self) -> tuple[float, ...]: ...
 ```
 
 ### Colour().convertedColourToHexTuple
@@ -102,8 +98,7 @@ sRGBColor -> ("ff", "ff", "ff")
 #### Signature
 
 ```python
-def convertedColourToHexTuple(self, uppercase: bool = False) -> tuple[str, ...]:
-    ...
+def convertedColourToHexTuple(self, uppercase: bool = False) -> tuple[str, ...]: ...
 ```
 
 ### Colour().convertedColourToTuple
@@ -116,8 +111,7 @@ sRGBColor -> (r, g, b)
 #### Signature
 
 ```python
-def convertedColourToTuple(self) -> tuple[float, ...]:
-    ...
+def convertedColourToTuple(self) -> tuple[float, ...]: ...
 ```
 
 ### Colour().getRGB255
@@ -129,8 +123,7 @@ get the colour as an rgb 255 tuple
 #### Signature
 
 ```python
-def getRGB255(self) -> tuple[int, ...]:
-    ...
+def getRGB255(self) -> tuple[int, ...]: ...
 ```
 
 ### Colour().getRGB255Hex
@@ -142,8 +135,7 @@ get the colour as an rgb 255 tuple in hex
 #### Signature
 
 ```python
-def getRGB255Hex(self, uppercase: bool = False) -> tuple[str, ...]:
-    ...
+def getRGB255Hex(self, uppercase: bool = False) -> tuple[str, ...]: ...
 ```
 
 ### Colour().toCMYK
@@ -155,8 +147,7 @@ convert to cmyk and dump a copy in self.convertedColour
 #### Signature
 
 ```python
-def toCMYK(self) -> CMYKColor:
-    ...
+def toCMYK(self) -> CMYKColor: ...
 ```
 
 ### Colour().toHSL
@@ -168,8 +159,7 @@ convert to hsl and dump a copy in self.convertedColour
 #### Signature
 
 ```python
-def toHSL(self) -> HSLColor:
-    ...
+def toHSL(self) -> HSLColor: ...
 ```
 
 ### Colour().toHSV
@@ -181,8 +171,7 @@ convert to hsv and dump a copy in self.convertedColour
 #### Signature
 
 ```python
-def toHSV(self) -> HSVColor:
-    ...
+def toHSV(self) -> HSVColor: ...
 ```
 
 ### Colour().toLAB
@@ -194,8 +183,7 @@ convert to lab and dump a copy in self.convertedColour
 #### Signature
 
 ```python
-def toLAB(self) -> LabColor:
-    ...
+def toLAB(self) -> LabColor: ...
 ```
 
 ### Colour().toRGB
@@ -207,8 +195,7 @@ convert to rgb and dump a copy in self.convertedColour
 #### Signature
 
 ```python
-def toRGB(self) -> sRGBColor:
-    ...
+def toRGB(self) -> sRGBColor: ...
 ```
 
 
@@ -231,8 +218,7 @@ class ColourSwatch:
         description: str | None = None,
         swatchCopyright: str | None = None,
         author: str | None = None,
-    ):
-        ...
+    ): ...
 ```
 
 ### ColourSwatch().__eq__
@@ -244,8 +230,7 @@ probably not ideal for getting equality - avoid using ==
 #### Signature
 
 ```python
-def __eq__(self, other: ColourSwatch):
-    ...
+def __eq__(self, other: ColourSwatch): ...
 ```
 
 ### ColourSwatch().__repr__
@@ -257,8 +242,7 @@ get a string representation of the object
 #### Signature
 
 ```python
-def __repr__(self) -> str:
-    ...
+def __repr__(self) -> str: ...
 ```
 
 ### ColourSwatch().toPILPalette
@@ -277,6 +261,5 @@ image.putpalette(colourSwatch.toPILPalette())
 #### Signature
 
 ```python
-def toPILPalette(self) -> list[int]:
-    ...
+def toPILPalette(self) -> list[int]: ...
 ```

@@ -25,8 +25,7 @@ Pure python implementation of the gimp gpl palette format.
 
 ```python
 class GimpGplPalette:
-    def __init__(self, fileName: BytesIO | str | None = None):
-        ...
+    def __init__(self, fileName: BytesIO | str | None = None): ...
 ```
 
 ### GimpGplPalette().__eq__
@@ -38,8 +37,7 @@ Perform a comparison.
 #### Signature
 
 ```python
-def __eq__(self, other: GimpGplPalette):
-    ...
+def __eq__(self, other: GimpGplPalette): ...
 ```
 
 ### GimpGplPalette().__repr__
@@ -51,8 +49,7 @@ Get a textual representation of this object.
 #### Signature
 
 ```python
-def __repr__(self):
-    ...
+def __repr__(self): ...
 ```
 
 ### GimpGplPalette().decode
@@ -72,8 +69,7 @@ Decode a byte buffer.
 #### Signature
 
 ```python
-def decode(self, data: str) -> None:
-    ...
+def decode(self, data: str) -> None: ...
 ```
 
 ### GimpGplPalette().encode
@@ -85,8 +81,7 @@ Encode to a raw data stream.
 #### Signature
 
 ```python
-def encode(self):
-    ...
+def encode(self): ...
 ```
 
 ### GimpGplPalette().load
@@ -102,8 +97,7 @@ Load a gimp file.
 #### Signature
 
 ```python
-def load(self, fileName: BytesIO | str):
-    ...
+def load(self, fileName: BytesIO | str): ...
 ```
 
 ### GimpGplPalette().save
@@ -115,6 +109,5 @@ Save this gimp image to a file.
 #### Signature
 
 ```python
-def save(self, fileName: str | BytesIO):
-    ...
+def save(self, fileName: str | BytesIO): ...
 ```
