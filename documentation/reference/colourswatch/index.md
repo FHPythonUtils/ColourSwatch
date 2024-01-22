@@ -1,7 +1,6 @@
 # Colourswatch
 
-[Colourswatch Index](../README.md#colourswatch-index) /
-Colourswatch
+[Colourswatch Index](../README.md#colourswatch-index) / Colourswatch
 
 > Auto-generated documentation for [colourswatch](../../../colourswatch/__init__.py) module.
 
@@ -11,5 +10,5 @@ Colourswatch
 ## Modules
 
 - [ColourSwatch](./colourswatch.md)
-- [Gimpgplpalette](./GimpGplPalette.md)
+- [Gimpgplpal](./gimpgplpal.md)
 - [Io](./io.md)

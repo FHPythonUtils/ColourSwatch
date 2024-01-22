@@ -6,5 +6,5 @@ A full list of `Colourswatch` project modules.
 
 - [Colourswatch](colourswatch/index.md#colourswatch)
     - [ColourSwatch](colourswatch/colourswatch.md#colourswatch)
-    - [Gimpgplpalette](colourswatch/GimpGplPalette.md#gimpgplpalette)
+    - [Gimpgplpal](colourswatch/gimpgplpal.md#gimpgplpal)
     - [Io](colourswatch/io.md#io)

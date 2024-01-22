@@ -3,51 +3,57 @@
 from __future__ import annotations
 
 from io import BytesIO
+from pathlib import Path
 
 
 class GimpGplPalette:
 	"""Pure python implementation of the gimp gpl palette format."""
 
-	def __init__(self, fileName: BytesIO | str | None = None):
+	def __init__(self, file: BytesIO | str| Path | None = None) -> None:
 		"""Pure python implementation of the gimp gpl palette format.
 
 		Args:
-			fileName (BytesIO, str, optional): filename. Defaults to None.
+		----
+			file (BytesIO | str| Path | None): filename. Defaults to None.
 		"""
 		self.name = ""
 		self.columns = 16
 		self.colors = []
 		self.colorNames = []
-		if fileName is not None:
-			self.load(fileName)
+		self.fileName = None
+		if file is not None:
+			self.load(file)
 
-	def load(self, fileName: BytesIO | str):
+	def load(self, file: BytesIO | str| Path ) -> None:
 		"""Load a gimp file.
 
 		:param fileName: can be a file name or a file-like object
 		"""
-		if isinstance(fileName, str):
-			self.fileName = fileName
-			file = open(fileName, "rb")
-		else:
-			self.fileName = fileName.name
-			file = fileName
-		data = file.read()
-		file.close()
-		self.decode(data.decode("utf-8"))
+		if isinstance(file, BytesIO):
+			with file as file:
+				self.decode(file.read().decode("utf-8"))
+				self.fileName = file.name
+			return
+		pth = Path(file)
+		self.decode(pth.read_text("utf-8"))
+		self.fileName = pth.name
+
 
 	def decode(self, data: str) -> None:
 		"""Decode a byte buffer.
 
 		Args:
+		----
 			data (str): data buffer to decode
 
 		Raises:
+		------
 			Exception: File format error.  Magic value mismatch.
 		"""
 		lines = [s.strip() for s in data.split("\n")]
 		if lines[0] != "GIMP Palette":
-			raise Exception("File format error.  Magic value mismatch.")
+			msg = "File format error.  Magic value mismatch."
+			raise RuntimeError(msg)
 		self.name = lines[1].split(":", 1)[-1].lstrip()
 		self.columns = int(lines[2].split(":", 1)[-1].lstrip())
 		for line in lines[3:]:
@@ -62,7 +68,7 @@ class GimpGplPalette:
 			else:
 				self.colorNames.append(None)
 
-	def encode(self):
+	def encode(self) -> bytes:
 		"""Encode to a raw data stream."""
 		data = []
 		data.append("GIMP Palette")
@@ -79,20 +85,22 @@ class GimpGplPalette:
 			data.append(line)
 		return ("\n".join(data) + "\n").encode("utf-8")
 
-	def save(self, fileName: str | BytesIO):
+	def save(self, file: BytesIO | str| Path ) -> None:
 		"""Save this gimp image to a file."""
-		if isinstance(fileName, str):
-			file = open(fileName, "wb")
-		else:
-			file = fileName
-		file.write(self.encode())
-		file.close()
+		data = self.encode()
+		if isinstance(file, BytesIO):
+			with file as file:
+				file.write(data)
+			return
+		pth = Path(file)
+		pth.write_bytes(data)
 
-	def __repr__(self):
+
+	def __repr__(self) -> str:
 		"""Get a textual representation of this object."""
 		ret = []
 		if self.fileName is not None:
-			ret.append(f"fileName: {self.fileName}")
+			ret.append(f"File Name: {self.fileName}")
 		ret.append(f"Name: {self.name}")
 		ret.append(f"Columns: {self.columns}")
 		ret.append("Colors:")
@@ -101,9 +109,14 @@ class GimpGplPalette:
 			line = f"{color[0]},{color[1]},{color[2]}"
 			if colorName is not None:
 				line = line + " " + colorName
+			ret.append(line)
 		return "\n".join(ret)
 
-	def __eq__(self, other: GimpGplPalette):
+	def __str__(self) -> str:
+		"""Get a textual representation of this object."""
+		return self.__repr__()
+
+	def __eq__(self, other: GimpGplPalette) -> bool:
 		"""Perform a comparison."""
 		if other.name != self.name:
 			return False
