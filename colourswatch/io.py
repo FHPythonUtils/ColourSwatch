@@ -59,6 +59,7 @@ def openColourSwatch(file: str | Path) -> ColourSwatch | list[ColourSwatch]:
 	Returns:
 	-------
 		ColourSwatch | list[ColourSwatch]: a colour swatch object
+
 	"""
 	functionMap = {
 		".gpl": openSwatch_GPL,
@@ -106,6 +107,7 @@ def saveColourSwatch(file: str | Path, colourSwatch: ColourSwatch | list[ColourS
 	Returns:
 	-------
 		None: [description]
+
 	"""
 	functionMap = {
 		".gpl": saveSwatch_GPL,

@@ -51,7 +51,7 @@ class ColourSwatch:
 
 		Usage:
 		```python
-		image = PIL.Image.new('P', (1, 1))
+		image = PIL.Image.new("P", (1, 1))
 		image.putpalette(colourSwatch.toPILPalette())
 		```
 		"""
@@ -173,6 +173,7 @@ class Colour:
 		Returns:
 		-------
 			tuple: tuple of hexstrings
+
 		"""
 		return tuple(
 			f"{colourPart:02X}" if uppercase else f"{colourPart:02x}"

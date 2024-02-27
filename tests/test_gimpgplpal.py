@@ -25,7 +25,6 @@ def test_eq() -> None:
 	assert gpl != gpl5
 
 
-
 def test_gpl() -> None:
 	gpl = GimpGplPalette(f"{THISDIR}/data/plasma.gpl")
 	assert gpl.name == "Plasma"
@@ -36,7 +35,9 @@ def test_gpl() -> None:
 
 def test_str() -> None:
 	gpl = GimpGplPalette(f"{THISDIR}/data/plasma.gpl")
-	gpl_str_expected = Path(f"{THISDIR}/data/plasma_gpl_str_expected.txt").read_text("utf-8").strip()
+	gpl_str_expected = (
+		Path(f"{THISDIR}/data/plasma_gpl_str_expected.txt").read_text("utf-8").strip()
+	)
 	assert str(gpl) == gpl_str_expected
 	gpl.fileName = None
 	assert str(gpl) == "\n".join(gpl_str_expected.splitlines()[1:])

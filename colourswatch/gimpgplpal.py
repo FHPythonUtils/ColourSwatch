@@ -9,12 +9,13 @@ from pathlib import Path
 class GimpGplPalette:
 	"""Pure python implementation of the gimp gpl palette format."""
 
-	def __init__(self, file: BytesIO | str| Path | None = None) -> None:
+	def __init__(self, file: BytesIO | str | Path | None = None) -> None:
 		"""Pure python implementation of the gimp gpl palette format.
 
 		Args:
 		----
 			file (BytesIO | str| Path | None): filename. Defaults to None.
+
 		"""
 		self.name = ""
 		self.columns = 16
@@ -24,7 +25,7 @@ class GimpGplPalette:
 		if file is not None:
 			self.load(file)
 
-	def load(self, file: BytesIO | str| Path ) -> None:
+	def load(self, file: BytesIO | str | Path) -> None:
 		"""Load a gimp file.
 
 		:param fileName: can be a file name or a file-like object
@@ -38,7 +39,6 @@ class GimpGplPalette:
 		self.decode(pth.read_text("utf-8"))
 		self.fileName = pth.name
 
-
 	def decode(self, data: str) -> None:
 		"""Decode a byte buffer.
 
@@ -49,6 +49,7 @@ class GimpGplPalette:
 		Raises:
 		------
 			Exception: File format error.  Magic value mismatch.
+
 		"""
 		lines = [s.strip() for s in data.split("\n")]
 		if lines[0] != "GIMP Palette":
@@ -85,7 +86,7 @@ class GimpGplPalette:
 			data.append(line)
 		return ("\n".join(data) + "\n").encode("utf-8")
 
-	def save(self, file: BytesIO | str| Path ) -> None:
+	def save(self, file: BytesIO | str | Path) -> None:
 		"""Save this gimp image to a file."""
 		data = self.encode()
 		if isinstance(file, BytesIO):
@@ -94,7 +95,6 @@ class GimpGplPalette:
 			return
 		pth = Path(file)
 		pth.write_bytes(data)
-
 
 	def __repr__(self) -> str:
 		"""Get a textual representation of this object."""
