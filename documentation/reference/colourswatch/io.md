@@ -64,7 +64,7 @@ def extNotRecognised(file: str | Path) -> str: ...
 
 ## getColourFromLine
 
-[Show source in io.py:142](../../../colourswatch/io.py#L142)
+[Show source in io.py:144](../../../colourswatch/io.py#L144)
 
 GetColourFromLine.
 
@@ -88,7 +88,7 @@ def getColourFromLine(
 
 ## getSwatchFromfile
 
-[Show source in io.py:158](../../../colourswatch/io.py#L158)
+[Show source in io.py:160](../../../colourswatch/io.py#L160)
 
 GetSwatchFromfile.
 
@@ -107,7 +107,7 @@ def getSwatchFromfile(file: str | Path, colours: list[Colour]) -> ColourSwatch: 
 
 ## getWriteOutColour
 
-[Show source in io.py:163](../../../colourswatch/io.py#L163)
+[Show source in io.py:165](../../../colourswatch/io.py#L165)
 
 GetWriteOutColour.
 
@@ -153,7 +153,7 @@ def openColourSwatch(file: str | Path) -> ColourSwatch | list[ColourSwatch]: ...
 
 ## openSwatch_ACBL
 
-[Show source in io.py:493](../../../colourswatch/io.py#L493)
+[Show source in io.py:495](../../../colourswatch/io.py#L495)
 
 Open a .ACBL into a colour swatch.
 
@@ -171,7 +171,7 @@ def openSwatch_ACBL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_ASE
 
-[Show source in io.py:651](../../../colourswatch/io.py#L651)
+[Show source in io.py:653](../../../colourswatch/io.py#L653)
 
 Open an .ase into a list of colour swatches.
 
@@ -189,7 +189,7 @@ def openSwatch_ASE(file: str | Path) -> list[ColourSwatch]: ...
 
 ## openSwatch_CDPAL
 
-[Show source in io.py:588](../../../colourswatch/io.py#L588)
+[Show source in io.py:590](../../../colourswatch/io.py#L590)
 
 Open a CorelDraw .PAL into a colour swatch.
 
@@ -207,7 +207,7 @@ def openSwatch_CDPAL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_COLOR
 
-[Show source in io.py:300](../../../colourswatch/io.py#L300)
+[Show source in io.py:302](../../../colourswatch/io.py#L302)
 
 Open a .COLOR into a colour swatch.
 
@@ -225,7 +225,7 @@ def openSwatch_COLOR(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_GPL
 
-[Show source in io.py:171](../../../colourswatch/io.py#L171)
+[Show source in io.py:173](../../../colourswatch/io.py#L173)
 
 Open a .GPL into a colour swatch.
 
@@ -243,7 +243,7 @@ def openSwatch_GPL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_HPL
 
-[Show source in io.py:626](../../../colourswatch/io.py#L626)
+[Show source in io.py:628](../../../colourswatch/io.py#L628)
 
 Open a .HPL into a colour swatch.
 
@@ -261,7 +261,7 @@ def openSwatch_HPL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_IMAGE
 
-[Show source in io.py:700](../../../colourswatch/io.py#L700)
+[Show source in io.py:702](../../../colourswatch/io.py#L702)
 
 Open .jpg, .webp.
 
@@ -279,7 +279,7 @@ def openSwatch_IMAGE(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_JSON
 
-[Show source in io.py:236](../../../colourswatch/io.py#L236)
+[Show source in io.py:238](../../../colourswatch/io.py#L238)
 
 Open a .JSON into a colour swatch.
 
@@ -297,7 +297,7 @@ def openSwatch_JSON(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_PNG
 
-[Show source in io.py:682](../../../colourswatch/io.py#L682)
+[Show source in io.py:684](../../../colourswatch/io.py#L684)
 
 Open a .png into a colour swatch.
 
@@ -315,7 +315,7 @@ def openSwatch_PNG(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_PSPPAL
 
-[Show source in io.py:563](../../../colourswatch/io.py#L563)
+[Show source in io.py:565](../../../colourswatch/io.py#L565)
 
 Open a PaintShopPro .PAL into a colour swatch.
 
@@ -333,7 +333,7 @@ def openSwatch_PSPPAL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_SKP
 
-[Show source in io.py:356](../../../colourswatch/io.py#L356)
+[Show source in io.py:358](../../../colourswatch/io.py#L358)
 
 Open a .SKP into a colour swatch.
 
@@ -351,7 +351,7 @@ def openSwatch_SKP(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_SOC
 
-[Show source in io.py:393](../../../colourswatch/io.py#L393)
+[Show source in io.py:395](../../../colourswatch/io.py#L395)
 
 Open a .SOC into a colour swatch.
 
@@ -369,7 +369,7 @@ def openSwatch_SOC(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_SPL
 
-[Show source in io.py:325](../../../colourswatch/io.py#L325)
+[Show source in io.py:327](../../../colourswatch/io.py#L327)
 
 Open a .SPL into a colour swatch.
 
@@ -387,7 +387,7 @@ def openSwatch_SPL(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_SVG
 
-[Show source in io.py:739](../../../colourswatch/io.py#L739)
+[Show source in io.py:741](../../../colourswatch/io.py#L741)
 
 Open a .svg into a colour swatch.
 
@@ -405,7 +405,7 @@ def openSwatch_SVG(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_TOML
 
-[Show source in io.py:268](../../../colourswatch/io.py#L268)
+[Show source in io.py:270](../../../colourswatch/io.py#L270)
 
 Open a .TOML into a colour swatch.
 
@@ -423,7 +423,7 @@ def openSwatch_TOML(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_TXT
 
-[Show source in io.py:451](../../../colourswatch/io.py#L451)
+[Show source in io.py:453](../../../colourswatch/io.py#L453)
 
 Open a .TXT into a colour swatch.
 
@@ -441,7 +441,7 @@ def openSwatch_TXT(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_XML
 
-[Show source in io.py:518](../../../colourswatch/io.py#L518)
+[Show source in io.py:520](../../../colourswatch/io.py#L520)
 
 Open a .XML into a colour swatch.
 
@@ -459,7 +459,7 @@ def openSwatch_XML(file: str | Path) -> ColourSwatch: ...
 
 ## openSwatch_YAML
 
-[Show source in io.py:204](../../../colourswatch/io.py#L204)
+[Show source in io.py:206](../../../colourswatch/io.py#L206)
 
 Open a .YAML into a colour swatch.
 
@@ -495,7 +495,7 @@ def prettify(
 
 ## saveColourSwatch
 
-[Show source in io.py:94](../../../colourswatch/io.py#L94)
+[Show source in io.py:95](../../../colourswatch/io.py#L95)
 
 Save a colour swatch to a file.
 
@@ -527,7 +527,7 @@ def saveColourSwatch(
 
 ## saveSwatch_ACBL
 
-[Show source in io.py:511](../../../colourswatch/io.py#L511)
+[Show source in io.py:513](../../../colourswatch/io.py#L513)
 
 Save a colour swatch as .ACBL.
 
@@ -545,7 +545,7 @@ def saveSwatch_ACBL(file: str | Path, colourSwatch: ColourSwatch) -> NoReturn: .
 
 ## saveSwatch_ASE
 
-[Show source in io.py:675](../../../colourswatch/io.py#L675)
+[Show source in io.py:677](../../../colourswatch/io.py#L677)
 
 Save a colour swatch as .ase.
 
@@ -563,7 +563,7 @@ def saveSwatch_ASE(file: str | Path, colourSwatch: ColourSwatch) -> NoReturn: ..
 
 ## saveSwatch_CDPAL
 
-[Show source in io.py:601](../../../colourswatch/io.py#L601)
+[Show source in io.py:603](../../../colourswatch/io.py#L603)
 
 Save a colour swatch as CorelDraw .PAL.
 
@@ -581,7 +581,7 @@ def saveSwatch_CDPAL(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_COLOR
 
-[Show source in io.py:309](../../../colourswatch/io.py#L309)
+[Show source in io.py:311](../../../colourswatch/io.py#L311)
 
 Save a colour swatch as .COLOR.
 
@@ -599,7 +599,7 @@ def saveSwatch_COLOR(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_GPL
 
-[Show source in io.py:190](../../../colourswatch/io.py#L190)
+[Show source in io.py:192](../../../colourswatch/io.py#L192)
 
 Save a colour swatch as .GPL.
 
@@ -617,7 +617,7 @@ def saveSwatch_GPL(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_HPL
 
-[Show source in io.py:635](../../../colourswatch/io.py#L635)
+[Show source in io.py:637](../../../colourswatch/io.py#L637)
 
 Save a colour swatch as .HPL.
 
@@ -635,7 +635,7 @@ def saveSwatch_HPL(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_IMAGE
 
-[Show source in io.py:719](../../../colourswatch/io.py#L719)
+[Show source in io.py:721](../../../colourswatch/io.py#L721)
 
 Save a colour swatch as .png, .jpg, .webp.
 
@@ -653,7 +653,7 @@ def saveSwatch_IMAGE(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_JSON
 
-[Show source in io.py:259](../../../colourswatch/io.py#L259)
+[Show source in io.py:261](../../../colourswatch/io.py#L261)
 
 Save a colour swatch as .JSON.
 
@@ -671,7 +671,7 @@ def saveSwatch_JSON(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_PSPPAL
 
-[Show source in io.py:572](../../../colourswatch/io.py#L572)
+[Show source in io.py:574](../../../colourswatch/io.py#L574)
 
 Save a colour swatch as PaintShopPro .PAL.
 
@@ -689,7 +689,7 @@ def saveSwatch_PSPPAL(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_SKP
 
-[Show source in io.py:378](../../../colourswatch/io.py#L378)
+[Show source in io.py:380](../../../colourswatch/io.py#L380)
 
 Save a colour swatch as .SKP.
 
@@ -707,7 +707,7 @@ def saveSwatch_SKP(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_SOC
 
-[Show source in io.py:407](../../../colourswatch/io.py#L407)
+[Show source in io.py:409](../../../colourswatch/io.py#L409)
 
 Save a colour swatch as .SOC.
 
@@ -725,7 +725,7 @@ def saveSwatch_SOC(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_SPL
 
-[Show source in io.py:334](../../../colourswatch/io.py#L334)
+[Show source in io.py:336](../../../colourswatch/io.py#L336)
 
 Save a colour swatch as .SPL.
 
@@ -743,7 +743,7 @@ def saveSwatch_SPL(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_SVG
 
-[Show source in io.py:775](../../../colourswatch/io.py#L775)
+[Show source in io.py:777](../../../colourswatch/io.py#L777)
 
 Save a colour swatch as .svg.
 
@@ -761,7 +761,7 @@ def saveSwatch_SVG(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_TOML
 
-[Show source in io.py:291](../../../colourswatch/io.py#L291)
+[Show source in io.py:293](../../../colourswatch/io.py#L293)
 
 Save a colour swatch as .TOML.
 
@@ -779,7 +779,7 @@ def saveSwatch_TOML(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_TXT
 
-[Show source in io.py:470](../../../colourswatch/io.py#L470)
+[Show source in io.py:472](../../../colourswatch/io.py#L472)
 
 Save a colour swatch as .TXT.
 
@@ -797,7 +797,7 @@ def saveSwatch_TXT(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_XML
 
-[Show source in io.py:539](../../../colourswatch/io.py#L539)
+[Show source in io.py:541](../../../colourswatch/io.py#L541)
 
 Save a colour swatch as .XML.
 
@@ -815,7 +815,7 @@ def saveSwatch_XML(file: str | Path, colourSwatch: ColourSwatch) -> None: ...
 
 ## saveSwatch_YAML
 
-[Show source in io.py:227](../../../colourswatch/io.py#L227)
+[Show source in io.py:229](../../../colourswatch/io.py#L229)
 
 Save a colour swatch as .YAML.
 

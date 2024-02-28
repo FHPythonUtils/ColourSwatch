@@ -87,7 +87,7 @@ def decode(self, data: str) -> None: ...
 
 ### GimpGplPalette().encode
 
-[Show source in gimpgplpal.py:71](../../../colourswatch/gimpgplpal.py#L71)
+[Show source in gimpgplpal.py:72](../../../colourswatch/gimpgplpal.py#L72)
 
 Encode to a raw data stream.
 
@@ -99,7 +99,7 @@ def encode(self) -> bytes: ...
 
 ### GimpGplPalette().load
 
-[Show source in gimpgplpal.py:27](../../../colourswatch/gimpgplpal.py#L27)
+[Show source in gimpgplpal.py:28](../../../colourswatch/gimpgplpal.py#L28)
 
 Load a gimp file.
 
@@ -115,7 +115,7 @@ def load(self, file: BytesIO | str | Path) -> None: ...
 
 ### GimpGplPalette().save
 
-[Show source in gimpgplpal.py:88](../../../colourswatch/gimpgplpal.py#L88)
+[Show source in gimpgplpal.py:89](../../../colourswatch/gimpgplpal.py#L89)
 
 Save this gimp image to a file.
 

@@ -117,7 +117,7 @@ def convertedColourToTuple(self) -> tuple[float, ...]: ...
 
 ### Colour().getRGB255
 
-[Show source in colourswatch.py:182](../../../colourswatch/colourswatch.py#L182)
+[Show source in colourswatch.py:183](../../../colourswatch/colourswatch.py#L183)
 
 Get the colour as an rgb 255 tuple.
 
@@ -129,7 +129,7 @@ def getRGB255(self) -> tuple[int, ...]: ...
 
 ### Colour().getRGB255Hex
 
-[Show source in colourswatch.py:187](../../../colourswatch/colourswatch.py#L187)
+[Show source in colourswatch.py:188](../../../colourswatch/colourswatch.py#L188)
 
 Get the colour as an rgb 255 tuple in hex.
 
@@ -267,7 +267,7 @@ Convert the ColourSwatch object to a pil palette.
 Usage:
 
 ```python
-image = PIL.Image.new('P', (1, 1))
+image = PIL.Image.new("P", (1, 1))
 image.putpalette(colourSwatch.toPILPalette())
 ```
 
