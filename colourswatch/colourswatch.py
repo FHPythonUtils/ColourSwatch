@@ -1,7 +1,6 @@
-""" hold colourswatch data and provide a series of helper methods such as the
+"""hold colourswatch data and provide a series of helper methods such as the
 ability to convert to to a pillow palette.
 """
-
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-""" do file io. """
+"""do file io."""
 
 from __future__ import annotations
 

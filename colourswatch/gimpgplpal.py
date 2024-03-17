@@ -1,5 +1,5 @@
-"""Pure python implementation of the gimp gpl palette format.
-"""
+"""Pure python implementation of the gimp gpl palette format."""
+
 from __future__ import annotations
 
 from io import BytesIO

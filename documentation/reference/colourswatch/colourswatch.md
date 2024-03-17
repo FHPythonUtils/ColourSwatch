@@ -26,7 +26,7 @@
 
 ## Colour
 
-[Show source in colourswatch.py:82](../../../colourswatch/colourswatch.py#L82)
+[Show source in colourswatch.py:81](../../../colourswatch/colourswatch.py#L81)
 
 Represent a single colour within the colour swatch.
 
@@ -45,7 +45,7 @@ class Colour:
 
 ### Colour().__eq__
 
-[Show source in colourswatch.py:122](../../../colourswatch/colourswatch.py#L122)
+[Show source in colourswatch.py:121](../../../colourswatch/colourswatch.py#L121)
 
 Equals.
 
@@ -57,7 +57,7 @@ def __eq__(self, other: Colour) -> bool: ...
 
 ### Colour().__repr__
 
-[Show source in colourswatch.py:108](../../../colourswatch/colourswatch.py#L108)
+[Show source in colourswatch.py:107](../../../colourswatch/colourswatch.py#L107)
 
 Get a string representation of the object.
 
@@ -69,7 +69,7 @@ def __repr__(self) -> str: ...
 
 ### Colour().colorToTuple
 
-[Show source in colourswatch.py:151](../../../colourswatch/colourswatch.py#L151)
+[Show source in colourswatch.py:150](../../../colourswatch/colourswatch.py#L150)
 
 Get the colour as a tuple. eg. sRGBColor -> (r, g, b).
 
@@ -81,7 +81,7 @@ def colorToTuple(self) -> tuple[float, ...]: ...
 
 ### Colour().convertedColourToHexTuple
 
-[Show source in colourswatch.py:165](../../../colourswatch/colourswatch.py#L165)
+[Show source in colourswatch.py:164](../../../colourswatch/colourswatch.py#L164)
 
 Get the previously converted colour as a tuple of hexstrings. eg.
 sRGBColor -> ("ff", "ff", "ff").
@@ -104,7 +104,7 @@ def convertedColourToHexTuple(self, uppercase: bool = False) -> tuple[str, ...]:
 
 ### Colour().convertedColourToTuple
 
-[Show source in colourswatch.py:157](../../../colourswatch/colourswatch.py#L157)
+[Show source in colourswatch.py:156](../../../colourswatch/colourswatch.py#L156)
 
 Get the previously converted colour as a tuple. eg.
 sRGBColor -> (r, g, b).
@@ -117,7 +117,7 @@ def convertedColourToTuple(self) -> tuple[float, ...]: ...
 
 ### Colour().getRGB255
 
-[Show source in colourswatch.py:183](../../../colourswatch/colourswatch.py#L183)
+[Show source in colourswatch.py:182](../../../colourswatch/colourswatch.py#L182)
 
 Get the colour as an rgb 255 tuple.
 
@@ -129,7 +129,7 @@ def getRGB255(self) -> tuple[int, ...]: ...
 
 ### Colour().getRGB255Hex
 
-[Show source in colourswatch.py:188](../../../colourswatch/colourswatch.py#L188)
+[Show source in colourswatch.py:187](../../../colourswatch/colourswatch.py#L187)
 
 Get the colour as an rgb 255 tuple in hex.
 
@@ -141,7 +141,7 @@ def getRGB255Hex(self, uppercase: bool = False) -> tuple[str, ...]: ...
 
 ### Colour().toCMYK
 
-[Show source in colourswatch.py:131](../../../colourswatch/colourswatch.py#L131)
+[Show source in colourswatch.py:130](../../../colourswatch/colourswatch.py#L130)
 
 Convert to cmyk and dump a copy in self.convertedColour.
 
@@ -153,7 +153,7 @@ def toCMYK(self) -> CMYKColor: ...
 
 ### Colour().toHSL
 
-[Show source in colourswatch.py:141](../../../colourswatch/colourswatch.py#L141)
+[Show source in colourswatch.py:140](../../../colourswatch/colourswatch.py#L140)
 
 Convert to hsl and dump a copy in self.convertedColour.
 
@@ -165,7 +165,7 @@ def toHSL(self) -> HSLColor: ...
 
 ### Colour().toHSV
 
-[Show source in colourswatch.py:136](../../../colourswatch/colourswatch.py#L136)
+[Show source in colourswatch.py:135](../../../colourswatch/colourswatch.py#L135)
 
 Convert to hsv and dump a copy in self.convertedColour.
 
@@ -177,7 +177,7 @@ def toHSV(self) -> HSVColor: ...
 
 ### Colour().toLAB
 
-[Show source in colourswatch.py:146](../../../colourswatch/colourswatch.py#L146)
+[Show source in colourswatch.py:145](../../../colourswatch/colourswatch.py#L145)
 
 Convert to lab and dump a copy in self.convertedColour.
 
@@ -189,7 +189,7 @@ def toLAB(self) -> LabColor: ...
 
 ### Colour().toRGB
 
-[Show source in colourswatch.py:126](../../../colourswatch/colourswatch.py#L126)
+[Show source in colourswatch.py:125](../../../colourswatch/colourswatch.py#L125)
 
 Convert to rgb and dump a copy in self.convertedColour.
 
@@ -203,7 +203,7 @@ def toRGB(self) -> sRGBColor: ...
 
 ## ColourSwatch
 
-[Show source in colourswatch.py:19](../../../colourswatch/colourswatch.py#L19)
+[Show source in colourswatch.py:18](../../../colourswatch/colourswatch.py#L18)
 
 Represents a colour swatch.
 
@@ -224,7 +224,7 @@ class ColourSwatch:
 
 ### ColourSwatch().__eq__
 
-[Show source in colourswatch.py:75](../../../colourswatch/colourswatch.py#L75)
+[Show source in colourswatch.py:74](../../../colourswatch/colourswatch.py#L74)
 
 Probably not ideal for getting equality - avoid using ==.
 
@@ -236,7 +236,7 @@ def __eq__(self, other: ColourSwatch) -> bool: ...
 
 ### ColourSwatch().__repr__
 
-[Show source in colourswatch.py:67](../../../colourswatch/colourswatch.py#L67)
+[Show source in colourswatch.py:66](../../../colourswatch/colourswatch.py#L66)
 
 Get a string representation of the object.
 
@@ -248,7 +248,7 @@ def __repr__(self) -> str: ...
 
 ### ColourSwatch().__str__
 
-[Show source in colourswatch.py:71](../../../colourswatch/colourswatch.py#L71)
+[Show source in colourswatch.py:70](../../../colourswatch/colourswatch.py#L70)
 
 Get a string representation of the object.
 
@@ -260,7 +260,7 @@ def __str__(self) -> str: ...
 
 ### ColourSwatch().toPILPalette
 
-[Show source in colourswatch.py:49](../../../colourswatch/colourswatch.py#L49)
+[Show source in colourswatch.py:48](../../../colourswatch/colourswatch.py#L48)
 
 Convert the ColourSwatch object to a pil palette.
 
