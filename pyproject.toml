@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "colourswatch"
-version = "2024"
+version = "2024.1"
 license = "mit"
 description = "Use this module to read, and write to a number of colour palette file formats"
 authors = ["FredHappyface"]
