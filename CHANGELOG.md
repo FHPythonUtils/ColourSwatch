@@ -3,6 +3,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2024.2 - 2014/03/30
+
+- support latest numpy + networkx (used by colormath)
+
 ## 2024.1 - 2024/03/17
 
 - code improvements
